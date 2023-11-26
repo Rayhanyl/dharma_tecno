@@ -22,6 +22,8 @@ Route::get('/', [LandingPageController::class, 'homeView'])->name('landing.page'
 Route::prefix('/auth')->name('auth.')->controller(AuthenticationController::class)->group(function () {
     Route::get('/login', 'loginView')->name('login.page');
     Route::get('/register', 'registerView')->name('register.page');
+    Route::post('/register/user', 'registerUser')->name('register.user');
+    Route::post('/edit/user', 'updateUser')->name('update.user');
     Route::post('/login', 'login')->name('login');
     Route::get('/logout', 'logout')->name('logout');
 });

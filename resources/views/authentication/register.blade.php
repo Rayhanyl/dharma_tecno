@@ -82,7 +82,7 @@
                 <h5>Buat akun</h5>
               </div>
               <div class="card-body">
-                <form class="row" role="form text-left" action="#"  method="POST">
+                <form class="row" role="form text-left" action="{{ route ('auth.register.user') }}"  method="POST">
                     @csrf
                   <div class="col-12 col-lg-6 mb-3">
                     <label for="nama-depan">Nama Depan</label>
@@ -108,7 +108,7 @@
                   </div>
                   <div class="col-12 col-lg-6 mb-3">
                     <label for="">Confirm Password</label>
-                    <input type="password" class="form-control" placeholder="Confirm Password" aria-label="Password" name="confirm_password" aria-describedby="confirm-password-addon">
+                    <input type="password" class="form-control" placeholder="Confirm Password" aria-label="Password" name="password_confirmation" aria-describedby="confirm-password-addon">
                   </div>
                   <div class="text-center">
                     <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign up</button>

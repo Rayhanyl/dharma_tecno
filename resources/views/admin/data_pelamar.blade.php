@@ -18,15 +18,22 @@
                                                 <thead class="table-orange">
                                                     <tr>
                                                         <th>No</th>
-                                                        <th>Object Pemeriksaan</th>
+                                                        <th>Posisi</th>
+                                                        <th>Tanggal Melamar</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @for ($i = 0; $i < 4; $i++) <tr>
+                                                    @for ($i = 0; $i < 4; $i++) 
+                                                    <tr>
+                                                        <td>{{ $i }}</td>
                                                         <td></td>
                                                         <td></td>
-                                                        </tr>
-                                                        @endfor
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    @endfor
                                                 </tbody>
                                             </table>
                                         </div>
