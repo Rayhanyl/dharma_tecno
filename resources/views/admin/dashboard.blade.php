@@ -12,8 +12,8 @@
                                 untuk mendapatkan pemberitahuan mengenai lowongan pekerjaan atau status lamaran</p>
                         </div>
                         <div class="col-12 col-lg-6 text-center">
-                            <a href="{{ route('form.calon-karyawan.page') }}"
-                                class="btn bg-gradient-info w-50 mt-4 mb-0 shadow">Lamar</a>
+                            <a href="{{ Auth::user()->role === 'admin' ? route('data.calon.page') : route('form.calon-karyawan.page') }}"
+                                class="btn bg-gradient-info w-50 mt-4 mb-0 shadow">{{ Auth::user()->role === 'admin' ? 'Data Calon Pelamar' : 'Lamar' }}</a>
                         </div>
                     </div>
                 </div>
