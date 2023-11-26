@@ -5,27 +5,28 @@
             <div class="page-header" style="min-height: 500vh">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12 bg-gradient-success shadow py-2" style="border-radius: 25px;">
-                            <h3 class="text-white">Pengisian Data Calon Karyawan</h3>
-                        </div>
-                        <div class="col-12 my-3">
-                            <h4 class="text-danger">PERHATIAN!!</h4>
-                            <p style="text-align: justify">
-                            <ol>
-                                <li>Penerimaan Karyawan di PT Dharma Tekno Indonesia tidak dikenakan biaya apapun
-                                    (GRATIS).</li>
-                                <li>Perhatikan semua data yang diisikan adalah BENAR. Dan dapat dipertanggungjawabkan
-                                    kebenarannya.</li>
-                            </ol>
-                            </p>
-                        </div>
-                        {{-- Data diri --}}
-                        <div class="col-12">
-                            <div class="card shadow rounded-4">
-                                <div class="card-body">
-                                    <h4>DATA DIRI (IDENTITAS)</h4>
-                                    <hr>
-                                    <form class="row g-3" action="">
+                        <form action="{{ route('application.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="col-12 bg-gradient-success shadow py-2" style="border-radius: 25px;">
+                                <h3 class="text-white">Pengisian Data Calon Karyawan</h3>
+                            </div>
+                            <div class="col-12 my-3">
+                                <h4 class="text-danger">PERHATIAN!!</h4>
+                                <p style="text-align: justify">
+                                <ol>
+                                    <li>Penerimaan Karyawan di PT Dharma Tekno Indonesia tidak dikenakan biaya apapun
+                                        (GRATIS).</li>
+                                    <li>Perhatikan semua data yang diisikan adalah BENAR. Dan dapat dipertanggungjawabkan
+                                        kebenarannya.</li>
+                                </ol>
+                                </p>
+                            </div>
+                            {{-- Data diri --}}
+                            <div class="col-12">
+                                <div class="card shadow rounded-4">
+                                    <div class="card-body">
+                                        <h4>DATA DIRI (IDENTITAS)</h4>
+                                        <hr>
                                         <div class="col-12 col-md-6">
                                             <label for="NamaLengkap" class="form-label">Nama Lengkap</label>
                                             <input type="text" name="fullname" class="form-control"
@@ -83,81 +84,107 @@
                                             </div>
                                             <textarea class="form-control" name="sesuaiktp" id="sesuaiktp" cols="10" rows="2"></textarea>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        {{-- Posisi Yang di Lamar --}}
-                        <div class="col-12 my-4">
-                            <div class="card shadow rounded-4">
-                                <div class="card-body">
-                                    <h4>Posisi Yang di Lamar</h4>
-                                    <hr>
-                                    <form action="#">
+                            {{-- Posisi Yang di Lamar --}}
+                            <div class="col-12 my-4">
+                                <div class="card shadow rounded-4">
+                                    <div class="card-body">
+                                        <h4>Posisi Yang di Lamar</h4>
+                                        <hr>
                                         <select class="form-select" aria-label="Pilih posisi yang dilamar">
                                             <option selected>Pilih posisi yang dilamar</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                            @foreach ($positions as $position)
+                                                <option value="{{ $position->id }}">{{ $position->name }}</option>
+                                            @endforeach
                                         </select>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        {{-- Riwayat Pendidikan --}}
-                        <div class="col-12 my-4">
-                            <div class="card shadow rounded-4">
-                                <div class="card-body">
-                                    <h4>Riwayat Pendidikan</h4>
-                                    <hr>
-                                    <form class="row g-3">
-                                        <div class="col-12">
-                                            <label for="nama_universitas" class="form-label">Nama Universitas
-                                                (S1/D3)</label>
-                                            <input type="text" name="nama_universitas" class="form-control"
-                                                id="nama_universitas">
+                            {{-- Riwayat Pendidikan --}}
+                            <div class="col-12 my-4">
+                                <div class="card shadow rounded-4">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between my-4">
+                                            <h4>Riwayat Pendidikan</h4>
+                                            <button class="btn btn-success">
+                                                Tambah Pendidikan
+                                            </button>
                                         </div>
-                                        <div class="col-12 col-lg-6">
-                                            <label for="tahun_lulus" class="form-label">Tahun Lulus</label>
-                                            <input type="text" name="tahun_lulus" class="form-control"
-                                                id="tahun_lulus">
+                                        @for ($i = 0; $i < 3; $i++)
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="float-end mt-3">
+                                                        <button class="btn btn-danger">-</button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="nama_universitas" class="form-label">Nama Universitas
+                                                        (S1/D3)</label>
+                                                    <input type="text"
+                                                        name="riwayat_pendidikan[{{ $i }}]['nama_universitas']"
+                                                        class="form-control" id="nama_universitas">
+                                                </div>
+                                                <div class="col-12 col-lg-6">
+                                                    <label for="tahun_lulus" class="form-label">Tahun Lulus</label>
+                                                    <input type="text"
+                                                        name="riwayat_pendidikan[{{ $i }}]['tahun_lulus']"
+                                                        class="form-control" id="tahun_lulus">
+                                                </div>
+                                                <div class="col-12 col-lg-6">
+                                                    <label for="nilai_ipk" class="form-label">IPK (4.00)</label>
+                                                    <input type="text"
+                                                        name="riwayat_pendidikan[{{ $i }}]['nilai_ipk']"
+                                                        class="form-control" id="nilai_ipk">
+                                                </div>
+                                                <div class="col-12 col-lg-6">
+                                                    <label for="organiasi_diikuti" class="form-label">Organisasi yang
+                                                        pernah
+                                                        diikuti</label>
+                                                    <input type="text"
+                                                        name="riwayat_pendidikan[{{ $i }}]['organiasi_diikuti']"
+                                                        class="form-control" id="organiasi_diikuti">
+                                                </div>
+                                                <div class="col-12 col-lg-6">
+                                                    <label for="tahun_organisasi" class="form-label">Tahun</label>
+                                                    <input type="text"
+                                                        name="riwayat_pendidikan[{{ $i }}]['tahun_organisasi']"
+                                                        class="form-control" id="tahun_organisasi">
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="jabatan_organisasi" class="form-label">Jabatan</label>
+                                                    <input type="text"
+                                                        name="riwayat_pendidikan[{{ $i }}]['jabatan_organisasi']"
+                                                        class="form-control" id="jabatan_organisasi">
+                                                </div>
+                                            </div>
+                                        @endfor
+                                        <div class="d-flex justify-content-between my-4">
+                                            <h4>Setifikat</h4>
+                                            <button class="btn btn-success">
+                                                Tambah Sertifikat
+                                            </button>
                                         </div>
-                                        <div class="col-12 col-lg-6">
-                                            <label for="nilai_ipk" class="form-label">IPK (4.00)</label>
-                                            <input type="text" name="nilai_ipk" class="form-control" id="nilai_ipk">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                            <label for="organiasi_diikuti" class="form-label">Organisasi yang pernah
-                                                diikuti</label>
-                                            <input type="text" name="organiasi_diikuti" class="form-control"
-                                                id="organiasi_diikuti">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                            <label for="tahun_organisasi" class="form-label">Tahun</label>
-                                            <input type="text" name="tahun_organisasi" class="form-control"
-                                                id="tahun_organisasi">
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="jabatan_organisasi" class="form-label">Jabatan</label>
-                                            <input type="text" name="jabatan_organisasi" class="form-control"
-                                                id="jabatan_organisasi">
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="sertifikat" class="form-label">Serifikat (Jika Ada)</label>
-                                            <input type="text" name="sertifikat" class="form-control"
-                                                id="sertifikat">
-                                        </div>
-                                    </form>
+                                        @for ($i = 0; $i < 3; $i++)
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label for="sertifikat" class="form-label">Serifikat (Jika
+                                                        Ada)</label>
+                                                    <input type="text" name="sertifikat[]" class="form-control"
+                                                        id="sertifikat">
+                                                </div>
+                                            </div>
+                                        @endfor
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        {{-- Riwayat Pekerjaan --}}
-                        <div class="col-12 my-4">
-                            <div class="card shadow rounded-4">
-                                <div class="card-body">
-                                    <h4>Riwayat Pekerjaan</h4>
-                                    <hr>
-                                    <form class="row g-3" action="#">
+                            {{-- Riwayat Pekerjaan --}}
+                            <div class="col-12 my-4">
+                                <div class="card shadow rounded-4">
+                                    <div class="card-body">
+                                        <h4>Riwayat Pekerjaan</h4>
+                                        <hr>
                                         <div class="col-12">
                                             <textarea class="form-control" name="riwayat_pekerjaan" id="riwayat_pekerjaan" cols="10" rows="2"></textarea>
                                         </div>
@@ -169,17 +196,15 @@
                                             <div id="riwayat_atasan_bawahan" class="form-text">Atasan : 3 orang, bapak a,
                                                 bapal b, ibu c / Bawahan : 5 orang, mas d, mba e, dst.</div>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        {{-- Minat dan Konsep Pribadi --}}
-                        <div class="col-12 my-4">
-                            <div class="card shadow rounded-4">
-                                <div class="card-body">
-                                    <h4>Minat dan Konsep Pribadi</h4>
-                                    <hr>
-                                    <form class="row g-3">
+                            {{-- Minat dan Konsep Pribadi --}}
+                            <div class="col-12 my-4">
+                                <div class="card shadow rounded-4">
+                                    <div class="card-body">
+                                        <h4>Minat dan Konsep Pribadi</h4>
+                                        <hr>
                                         <div class="col-12">
                                             <label for="alasan_ingin_bekerja_diperusahaan" class="form-label">Mengapa anda
                                                 ingin bekerja di perusahaan kami?</label>
@@ -210,29 +235,28 @@
                                             <input type="text" name="kenalan_didalam_perusahaan" class="form-control"
                                                 id="kenalan_didalam_perusahaan">
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        {{-- Pengumpulan Berkas --}}
-                        <div class="col-12 my-4">
-                            <div class="card shadow rounded-4">
-                                <div class="card-body">
-                                    <h4>Pengumpulan Berkas</h4>
-                                    <hr>
-                                    <form action="#">
+                            {{-- Pengumpulan Berkas --}}
+                            <div class="col-12 my-4">
+                                <div class="card shadow rounded-4">
+                                    <div class="card-body">
+                                        <h4>Pengumpulan Berkas</h4>
+                                        <hr>
                                         <div class="mb-3">
                                             <label for="formFile" class="form-label">Silahkan upload CV anda melalui link
                                                 dibawah ini</label>
                                             <input class="form-control" type="file" id="formFile">
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <button class="btn bg-gradient-success rounded-4 w-100">Submit Lamaran</button>
-                        </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn bg-gradient-success rounded-4 w-100">Submit
+                                    Lamaran</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -241,16 +265,18 @@
     @push('script')
         <script>
             $(document).ready(function() {
-                $('#sesuaiktp').prop('disabled', true);
+                $('#sesuaiktp').prop('readonly', true);
                 $('input[name="inlineRadioOptionsDomisili"]').on('change', function() {
                     if ($(this).val() === 'samektp') {
-                        $('#sesuaiktp').prop('disabled', true);
+                        $('#sesuaiktp').prop('readonly', true);
+                        $('#sesuaiktp').val($('#alamatlengkap').val());
                     } else {
-                        $('#sesuaiktp').prop('disabled', false);
+                        $('#sesuaiktp').prop('readonly', false);
+                        $('#sesuaiktp').val('');
                     }
                 });
                 $('#alamatlengkap').on('keyup', function() {
-                    if ($('input[name="inlineRadioOptionsDomisili"]').val() === 'samektp') {
+                    if ($('#sesuaiktp').prop('readonly')) {
                         $('#sesuaiktp').val($(this).val());
                     }
                 })

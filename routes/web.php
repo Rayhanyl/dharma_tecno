@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
+    ApplicationController,
     AuthenticationController,
     LandingPageController,
     DashboardController,
@@ -32,5 +33,6 @@ Route::prefix('/auth')->name('auth.')->controller(AuthenticationController::clas
 });
 
 Route::middleware('auth')->group(function () {
+    Route::resource('/application', ApplicationController::class);
     Route::get('/dashboard', [DashboardController::class, 'dashboardView'])->name('dashboard.page');
 });
