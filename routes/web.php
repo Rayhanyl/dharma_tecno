@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{
+    AuthenticationController,
+    LandingPageController,
+    DashboardController,
+};
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::get('/', [LandingPageController::class, 'homeView'])->name('landing.page');
+Route::get('/Login', [AuthenticationController::class, 'loginView'])->name('login.page');
+Route::get('/Register', [AuthenticationController::class, 'registerView'])->name('register.page');
+Route::get('/dashboard', [DashboardController::class, 'dashboardView'])->name('dashboard.page');
+Route::get('/data-diri/user', [DashboardController::class, 'dataDiriView'])->name('datadiri.page');
+Route::get('/status-lamaran', [DashboardController::class, 'statusLamaranView'])->name('status.page');
+Route::get('/form/calon-karyawan', [DashboardController::class, 'formCalonKaryawanView'])->name('form.calon-karyawan.page');
+Route::get('/data/calon-karyawan', [DashboardController::class, 'dataCalonPelamarView'])->name('data.calon.page');
+Route::get('/data/pelamar', [DashboardController::class, 'dataPelamarView'])->name('data.pelamar.page');
