@@ -54,7 +54,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link me-2" href="{{ route('register.page') }}">
+                                    <a class="nav-link me-2" href="{{ route('auth.register.page') }}">
                                         <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
                                         Sign Up
                                     </a>
@@ -106,7 +106,7 @@
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                                     <p class="mb-4 text-sm mx-auto">
                                         Belum mempunyai akun?
-                                        <a href="{{ route('register.page') }}"
+                                        <a href="{{ route('auth.register.page') }}"
                                             class="text-info text-gradient font-weight-bold">Sign up</a>
                                     </p>
                                 </div>

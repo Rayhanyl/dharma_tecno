@@ -58,6 +58,18 @@
                                             Home
                                         </a>
                                     </li>
+                                <li class="nav-item">
+                                    <a class="nav-link me-2" href="{{ route ('auth.register.page') }}">
+                                        <i class="fas fa-registered opacity-6 text-dark me-1"></i>
+                                        Sign Up
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link me-2" href="{{ route ('auth.login.page') }}">
+                                        <i class="fas fa-sign-in-alt opacity-6 text-dark me-1"></i>
+                                        Sign In
+                                    </a>
+                                </li>
                                 @endguest
                                 @auth
                                     <li class="nav-item">
