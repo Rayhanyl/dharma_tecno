@@ -57,6 +57,7 @@
                                         Home
                                     </a>
                                 </li>
+                                
                                 <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
                                         href="{{ route ('dashboard.page') }}">
