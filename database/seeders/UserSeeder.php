@@ -13,13 +13,27 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'email'             => 'admin@mail.com',
-            'password'          => 'qwerty',
-            'first_name'        => 'Admin',
-            'last_name'         => 'DTI',
-            'phone_number'      => '08129312399',
-            'role'              => 'admin'
-        ]);
+        $users = [
+            [
+                'email'             => 'admin@mail.com',
+                'password'          => 'qwerty',
+                'first_name'        => 'Admin',
+                'last_name'         => 'DTI',
+                'phone_number'      => '08129312399',
+                'role'              => 'admin'
+            ],
+            [
+                'email'             => 'applicant@mail.com',
+                'password'          => 'qwerty',
+                'first_name'        => 'Rayhan yuda',
+                'last_name'         => 'lesmana',
+                'phone_number'      => '+6285282205728',
+                'role'              => 'applicant'
+            ],
+        ];
+
+        foreach ($users as $user) {
+            User::create($user);
+        };
     }
 }
