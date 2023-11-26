@@ -85,7 +85,7 @@
                                     <p class="mb-0">Silahkan login untuk memulai lamaran</p>
                                 </div>
                                 <div class="card-body">
-                                    <form role="form" action="" method="POST">
+                                    <form role="form" action="{{ route('auth.login') }}" method="POST">
                                         @csrf
                                         <label>Email</label>
                                         <div class="mb-3">

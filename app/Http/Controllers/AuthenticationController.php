@@ -11,6 +11,7 @@ class AuthenticationController extends Controller
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
+            return redirect()->route('dashboard.page');
         } else {
             return redirect()->back()->with('error', "Email & Password Doesn't match in our database");
         }
@@ -21,6 +22,7 @@ class AuthenticationController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        return redirect()->route('auth.login.page');
     }
 
     public function loginView()
