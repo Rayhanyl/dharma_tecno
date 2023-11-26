@@ -14,7 +14,6 @@ class PositionSeeder extends Seeder
     public function run(): void
     {
         $positions = [
-            'Penanggung Jawab Teknis',
             'Gudang',
             'Teknisi',
             'Staff Gudang',
