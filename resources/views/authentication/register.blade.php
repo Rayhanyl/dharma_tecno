@@ -46,13 +46,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link me-2" href="{{ route ('register.page') }}">
+            <a class="nav-link me-2" href="{{ route ('auth.register.page') }}">
               <i class="fas fa-user-circle opacity-6  me-1"></i>
               Sign Up
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link me-2" href="{{ route ('login.page') }}">
+            <a class="nav-link me-2" href="{{ route ('auth.login.page') }}">
               <i class="fas fa-key opacity-6  me-1"></i>
               Sign In
             </a>
@@ -113,7 +113,7 @@
                   <div class="text-center">
                     <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign up</button>
                   </div>
-                  <p class="text-sm mt-3 mb-0">Already have an account? <a href="{{ route ('login.page') }}" class="text-dark font-weight-bolder">Sign in</a></p>
+                  <p class="text-sm mt-3 mb-0">Already have an account? <a href="{{ route ('auth.login.page') }}" class="text-dark font-weight-bolder">Sign in</a></p>
                 </form>
               </div>
             </div>

@@ -18,7 +18,7 @@
                                         Indonesia. Kami sangat antusias untuk menemukan individu berbakat yang ingin
                                         bergabung dengan tim kami dan berkontribusi dalam mewujudkan visi dan misi
                                         perusahaan kami.</p>
-                                    <a href="{{ route ('login.page') }}"
+                                    <a href="{{ route ('auth.login.page') }}"
                                         class="btn bg-gradient-info w-50 mt-4 mb-0">Lamar
                                         sekarang</a>
                                 </div>
