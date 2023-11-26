@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\Position;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -30,10 +32,19 @@ class DashboardController extends Controller
 
     public function dataCalonPelamarView()
     {
-        return view('admin.data_calon_pelamar');
+        $statuses = ['processed', 'approved', 'interviewed'];
+        $data = Application::whereIn('status', $statuses)->get();
+        return view('admin.data_calon_pelamar',compact('data'));
     }
-    public function dataPelamarView()
+    public function historyPelamarView()
     {
-        return view('admin.data_pelamar');
+        $user = Auth::user();
+        if ($user->role === 'admin') {
+            $data = Application::get();
+            return view('admin.history_pelamar',compact('data'));
+        } else {
+            $data = Application::where('user_id', $user->id)->with('user', 'position')->get();
+            return view('user.history_lamaran',compact('data'));
+        }
     }
 }

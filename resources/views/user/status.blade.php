@@ -16,8 +16,8 @@
                                     <h6>Posisi yang dilamar : Manager</h6>
                                     <div class="progress-track">
                                         <ul id="progressbar">
-                                            <li class="step0 active" id="step1">Status Lamaran</li>
-                                            <li class="step0 text-start" id="step2">Berkas Diproses</li>
+                                            <li class="step0 active" id="step1">Berkas Diproses</li>
+                                            <li class="step0 text-start" id="step2">Berkas Diterima</li>
                                             <li class="step0 text-start" id="step3">Tahap Interview</li>
                                             <li class="step0" id="step4">Lamaran Diterima</li>
                                         </ul>

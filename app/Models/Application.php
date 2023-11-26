@@ -26,6 +26,6 @@ class Application extends Model
 
     public function position()
     {
-        return $this->HasOne(Position::class);
+        return $this->belongsTo(Position::class);
     }
 }
