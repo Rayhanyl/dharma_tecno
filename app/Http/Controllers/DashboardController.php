@@ -24,6 +24,11 @@ class DashboardController extends Controller
         return view('user.status');
     }
 
+    public function viewDataApplicant($id){
+        $data = Application::where('id', $id)->get();
+        return view('admin.view_data_applicant');
+    }
+
     public function formCalonKaryawanView()
     {
         $positions = Position::all();

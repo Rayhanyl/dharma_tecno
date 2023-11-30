@@ -35,7 +35,7 @@
             </div>
         </div>
     </section>
-    <section style="margin:50px 0px;"> 
+    <section style="margin:50px 0px;">
         <div class="page-header min-vh-55">
             <div class="container">
                 <div class="row my-5">
@@ -46,13 +46,21 @@
                             </div>
                             <div class="col-12 col-lg-8">
                                 <p style="text-align: justify;line-height:30px;">
-                                    <span class="text-success fw-bold">PT Dharma Tekno Indonesia</span> adalah Perusahaan lokal dengan mimpi global, yang mengepankan "kearifan lokal" dalam setiap langkahnya. Dengan "DHARMA" sebagai brand yang di usung, didominasi warna hijau menandakan "ramah lingkungan" dibalut 5 garis yang membentuk perisai sebagai bentuk rukun kompak untuk membentengi kebenaran dalam mecapai tujuan perusahaan.
+                                    <span class="text-success fw-bold">PT Dharma Tekno Indonesia</span> adalah
+                                    Perusahaan lokal dengan mimpi global, yang mengepankan "kearifan lokal" dalam setiap
+                                    langkahnya. Dengan "DHARMA" sebagai brand yang di usung, didominasi warna hijau
+                                    menandakan "ramah lingkungan" dibalut 5 garis yang membentuk perisai sebagai bentuk
+                                    rukun kompak untuk membentengi kebenaran dalam mecapai tujuan perusahaan.
                                 </p>
                                 <p>
-                                    PT DTI merupakan perusahaan yang bergerak dibidang bisnis alat kesehatan. didirikan oleh pribadi yang memiliki karakter luhur warisan bangsa, - jujur amanah rukun kompak - sebagai landasan dan acuan setiap kegiatan.
+                                    PT DTI merupakan perusahaan yang bergerak dibidang bisnis alat kesehatan. didirikan
+                                    oleh pribadi yang memiliki karakter luhur warisan bangsa, - jujur amanah rukun
+                                    kompak - sebagai landasan dan acuan setiap kegiatan.
                                 </p>
                                 <p>
-                                    PT DTI didukung oleh team profesional yang berpengalaman dalam melaksanakan proyek, siap bersaing dengan perusahaan sejenis. PT DTI siap menjadi mitra bisnis yang profesional dengan mengedepankan kepuasan mitra bisnis dan semua customer. 
+                                    PT DTI didukung oleh team profesional yang berpengalaman dalam melaksanakan proyek,
+                                    siap bersaing dengan perusahaan sejenis. PT DTI siap menjadi mitra bisnis yang
+                                    profesional dengan mengedepankan kepuasan mitra bisnis dan semua customer.
                                 </p>
                             </div>
                         </div>
@@ -64,7 +72,7 @@
                             </div>
                             <div class="col-12 text-center">
                                 Menjadi perusahaan penyedia alat kesehatan yang handal bermanfaat untuk nkri.
-                            </div>  
+                            </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-6 my-5">
@@ -73,8 +81,9 @@
                                 <h2 class="text-gradient text-success">Misi</h2>
                             </div>
                             <div class="col-12 text-center">
-                                Menyediakan alat kesehatan terpadu dan bermutu ikut andil dalam membantu program pemerintah dalam meningkatkan tingkat kesehatan rakyat indonesia.
-                            </div>  
+                                Menyediakan alat kesehatan terpadu dan bermutu ikut andil dalam membantu program
+                                pemerintah dalam meningkatkan tingkat kesehatan rakyat indonesia.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -216,5 +225,4 @@
         </div>
     </section>
 </main>
-
 @endsection
