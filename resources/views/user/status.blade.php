@@ -14,14 +14,22 @@
                             <div class="card shadow rounded-4">
                                 <div class="card-body">
                                     <h6>Posisi yang dilamar : Manager</h6>
-                                    <div class="progress-track">
-                                        <ul id="progressbar">
-                                            <li class="step0 active" id="step1">Berkas Diproses</li>
-                                            <li class="step0 text-start" id="step2">Berkas Diterima</li>
-                                            <li class="step0 text-start" id="step3">Tahap Interview</li>
-                                            <li class="step0" id="step4">Lamaran Diterima</li>
-                                        </ul>
-                                    </div>
+                                    @if ($application->status == 'rejected')
+                                        <h4 class="text-danger text-center">Maaf, anda tidak lolos seleksi</h4>
+                                    @else
+                                        <div class="progress-track">
+                                            <ul id="progressbar">
+                                                <li class="step0 {{ $application->status == 'processed' || $application->status == 'approved' || $application->status == 'interviewed' || $application->status == 'accepted' ? 'active' : '' }}"
+                                                    id="step1">Berkas Diproses</li>
+                                                <li class="step0 {{ $application->status == 'approved' || $application->status == 'interviewed' || $application->status == 'accepted' ? 'active' : '' }}"
+                                                    id="step2">Berkas Diterima</li>
+                                                <li class="step0 {{ $application->status == 'interviewed' || $application->status == 'accepted' ? 'active' : '' }}"
+                                                    id="step3">Tahap Interview</li>
+                                                <li class="step0 {{ $application->status == 'accepted' ? 'active' : '' }}"
+                                                    id="step4">Lamaran Diterima</li>
+                                            </ul>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -107,7 +115,7 @@
         color: #82d616 !important;
     }
 
-    #progressbar li.active{
+    #progressbar li.active {
         color: #82d616 !important;
     }
 

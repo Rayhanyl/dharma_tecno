@@ -22,13 +22,15 @@ class DashboardController extends Controller
 
     public function statusLamaranView()
     {
-        return view('user.status');
+        $application = Application::whereUserId(Auth::user()->id)->latest('id')->first();
+        return view('user.status', compact('application'));
     }
 
-    public function viewDataApplicant($id){
+    public function viewDataApplicant($id)
+    {
         $data = Application::where('id', $id)->with('user', 'position')->get();
         $education = Education::where('application_id', $id)->get();
-        return view('admin.view_data_applicant', compact('data','education'));
+        return view('admin.view_data_applicant', compact('data', 'education'));
     }
 
     public function formCalonKaryawanView()
@@ -41,7 +43,7 @@ class DashboardController extends Controller
     {
         $statuses = ['processed', 'approved', 'interviewed'];
         $data = Application::whereIn('status', $statuses)->get();
-        return view('admin.data_calon_pelamar',compact('data'));
+        return view('admin.data_calon_pelamar', compact('data'));
     }
 
     public function historyPelamarView()
@@ -49,10 +51,10 @@ class DashboardController extends Controller
         $user = Auth::user();
         if ($user->role === 'admin') {
             $data = Application::get();
-            return view('admin.history_pelamar',compact('data'));
+            return view('admin.history_pelamar', compact('data'));
         } else {
             $data = Application::where('user_id', $user->id)->with('user', 'position')->get();
-            return view('user.history_lamaran',compact('data'));
+            return view('user.history_lamaran', compact('data'));
         }
     }
 }
