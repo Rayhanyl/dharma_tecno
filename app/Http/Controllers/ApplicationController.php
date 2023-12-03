@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreApplicationRequest;
 use App\Http\Requests\UpdateApplicationRequest;
+use App\Models\Certificate;
 use App\Models\Education;
 
 class ApplicationController extends Controller
@@ -32,35 +33,48 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-        $application = Application::create([
-            'fullname'              => $request->fullname,
-            'identity_number'       => $request->noidentitas,
-            'birthplace'            => $request->tmplahir,
-            'birthdate'             => $request->ttglahir,
-            'religion'              => $request->agama,
-            'address'               => $request->alamatlengkap,
-            'residence_address'     => $request->sesuaiktp,
-            'active_phone'          => $request->nohp,
-            'job_histories'         => $request->riwayat_pekerjaan,
-            'leader_job_histories'  => $request->riwayat_atasan_bawahan,
-            'reason_to_apply'       => $request->alasan_ingin_bekerja_diperusahaan,
-            'salary_expectation'    => $request->harapan_gaji,
-            'facility_expectation'  => $request->fasilitas_tambahan,
-            'work_date'             => $request->kesiapan_mulai_bekerja,
-            'relation_person'       => $request->kenalan_didalam_perusahaan,
-            'cv'                    => $request->cv,
-            'status'                => 'processed',
-            'position_id'           => $request->position_id,
-            'user_id'               => Auth::User()->id,
-        ]);
+        $application = new Application;
+        if ($request->hasFile('cv')) {
+            $request->file('cv')->storeAs('public/media/applications', $request->cv->hashName());
+        }
+        $application->fullname              = $request->fullname;
+        $application->identity_number       = $request->noidentitas;
+        $application->birthplace            = $request->tmplahir;
+        $application->birthdate             = $request->ttglahir;
+        $application->religion              = $request->agama;
+        $application->address               = $request->alamatlengkap;
+        $application->residence_address     = $request->sesuaiktp;
+        $application->active_phone          = $request->nohp;
+        $application->job_histories         = $request->riwayat_pekerjaan;
+        $application->leader_job_histories  = $request->riwayat_atasan_bawahan;
+        $application->reason_to_apply       = $request->alasan_ingin_bekerja_diperusahaan;
+        $application->salary_expectation    = $request->harapan_gaji;
+        $application->facility_expectation  = $request->fasilitas_tambahan;
+        $application->work_date             = $request->kesiapan_mulai_bekerja;
+        $application->relation_person       = $request->kenalan_didalam_perusahaan;
+        $application->cv                    = $request->cv->hashName();
+        $application->status                = 'processed';
+        $application->position_id           = $request->position_id;
+        $application->user_id               = Auth::User()->id;
+        $application->save();
         foreach ($request->riwayat_pendidikan as $value) {
-            Education::create([
-                'application_id'    => $application->id,
-                'university'        => $application->nama_universitas,
-                'organizations'     => $application->organiasi_diikuti,
-                
-            ]);
+            $education = new Education;
+            $education->application_id    = $application->id;
+            $education->university        = $value['nama_universitas'];
+            $education->ipk               = $value['nilai_ipk'];
+            $education->organizations     = $value['organiasi_diikuti'];
+            $education->year              = $value['tahun_organisasi'];
+            $education->position          = $value['jabatan_organisasi'];
+            $education->save();
+        }
+        foreach ($request->sertifikat as $idx => $value) {
+            $certificate = new Certificate;
+            if ($request->hasFile('sertifikat')[$idx]) {
+                $request->file('sertifikat')[$idx]->storeAs('public/media/certificates', $request->sertifikat[$idx]->hashName());
+            }
+            $certificate->application_id    = $application->id;
+            $certificate->certificate       = $request->sertifikat[$idx]->hashName();
+            $certificate->save();
         }
         return redirect()->back();
     }
