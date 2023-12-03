@@ -27,62 +27,65 @@
                                     <div class="card-body">
                                         <h4>DATA DIRI (IDENTITAS)</h4>
                                         <hr>
-                                        <div class="col-12 col-md-6">
-                                            <label for="NamaLengkap" class="form-label">Nama Lengkap</label>
-                                            <input type="text" name="fullname" class="form-control"
-                                                placeholder="Nama Lengkap" id="NamaLengkap">
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <label for="noidentitas" class="form-label">No Identitas</label>
-                                            <input type="number" name="noidentitas" placeholder="No KTP / SIM"
-                                                class="form-control" id="noidentitas">
-                                        </div>
-                                        <div class="col-12 col-md-3">
-                                            <label for="tmptlahir" class="form-label">Tempat Lahir</label>
-                                            <input type="text" name="noidentitas" placeholder="Tempat Lahir"
-                                                class="form-control" id="tmptlahir">
-                                        </div>
-                                        <div class="col-12 col-md-3">
-                                            <label for="ttglahir" class="form-label">Tanggal Lahir</label>
-                                            <input type="date" name="ttglahir" placeholder="Tanggal Lahir"
-                                                class="form-control" id="ttglahir">
-                                        </div>
-                                        <div class="col-12 col-md-3">
-                                            <label for="agama" class="form-label">Agama</label>
-                                            <select name="agama" id="agama" class="form-select">
-                                                <option value="" selected disabled>Pilih Agama</option>
-                                                <option value="islam">Islam</option>
-                                                <option value="protestant">Protestan</option>
-                                                <option value="catholic">Katolik</option>
-                                                <option value="confucius">Konghucu</option>
-                                                <option value="buddha">Budha</option>
-                                                <option value="hindu">Hindu</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-12 col-md-3">
-                                            <label for="nohp" class="form-label">No Hp /Telepon Aktif</label>
-                                            <input type="text" name="nohp" placeholder="No Hp / Telepon Aktif"
-                                                class="form-control" id="nohp">
-                                        </div>
-                                        <div class="col-12 col-md-12">
-                                            <label for="alamatlengkap" class="form-label">Alamat Lengkap</label>
-                                            <textarea class="form-control" name="alamatlengkap" id="alamatlengkap" cols="10" rows="2"></textarea>
-                                        </div>
-                                        <div class="col-12 col-md-12">
-                                            <label for="alamatlengkap" class="form-label">Alamat Domisili</label>
-                                            <br>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio"
-                                                    name="inlineRadioOptionsDomisili" id="inlineRadio1" value="samektp"
-                                                    checked>
-                                                <label class="form-check-label" for="inlineRadio1">Sesuai dengan KTP</label>
+                                        <div class="row">
+                                            <div class="col-12 col-md-6">
+                                                <label for="NamaLengkap" class="form-label">Nama Lengkap</label>
+                                                <input type="text" name="fullname" class="form-control"
+                                                    placeholder="Nama Lengkap" id="NamaLengkap">
                                             </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio"
-                                                    name="inlineRadioOptionsDomisili" id="inlineRadio2" value="others">
-                                                <label class="form-check-label" for="inlineRadio2">Lainnya</label>
+                                            <div class="col-12 col-md-6">
+                                                <label for="noidentitas" class="form-label">No Identitas</label>
+                                                <input type="number" name="noidentitas" placeholder="No KTP / SIM"
+                                                    class="form-control" id="noidentitas">
                                             </div>
-                                            <textarea class="form-control" name="sesuaiktp" id="sesuaiktp" cols="10" rows="2"></textarea>
+                                            <div class="col-12 col-md-3">
+                                                <label for="tmptlahir" class="form-label">Tempat Lahir</label>
+                                                <input type="text" name="tmplahir" placeholder="Tempat Lahir"
+                                                    class="form-control" id="tmptlahir">
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <label for="ttglahir" class="form-label">Tanggal Lahir</label>
+                                                <input type="date" name="ttglahir" placeholder="Tanggal Lahir"
+                                                    class="form-control" id="ttglahir">
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <label for="agama" class="form-label">Agama</label>
+                                                <select name="agama" id="agama" class="form-select">
+                                                    <option value="" selected disabled>Pilih Agama</option>
+                                                    <option value="islam">Islam</option>
+                                                    <option value="protestant">Protestan</option>
+                                                    <option value="catholic">Katolik</option>
+                                                    <option value="confucius">Konghucu</option>
+                                                    <option value="buddha">Budha</option>
+                                                    <option value="hindu">Hindu</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <label for="nohp" class="form-label">No Hp /Telepon Aktif</label>
+                                                <input type="text" name="nohp" placeholder="No Hp / Telepon Aktif"
+                                                    class="form-control" id="nohp">
+                                            </div>
+                                            <div class="col-12 col-md-12">
+                                                <label for="alamatlengkap" class="form-label">Alamat Lengkap</label>
+                                                <textarea class="form-control" name="alamatlengkap" id="alamatlengkap" cols="10" rows="2"></textarea>
+                                            </div>
+                                            <div class="col-12 col-md-12">
+                                                <label for="alamatlengkap" class="form-label">Alamat Domisili</label>
+                                                <br>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio"
+                                                        name="inlineRadioOptionsDomisili" id="inlineRadio1" value="samektp"
+                                                        checked>
+                                                    <label class="form-check-label" for="inlineRadio1">Sesuai dengan
+                                                        KTP</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio"
+                                                        name="inlineRadioOptionsDomisili" id="inlineRadio2" value="others">
+                                                    <label class="form-check-label" for="inlineRadio2">Lainnya</label>
+                                                </div>
+                                                <textarea class="form-control" name="sesuaiktp" id="sesuaiktp" cols="10" rows="2"></textarea>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -93,7 +96,8 @@
                                     <div class="card-body">
                                         <h4>Posisi Yang di Lamar</h4>
                                         <hr>
-                                        <select class="form-select" aria-label="Pilih posisi yang dilamar">
+                                        <select class="form-select" aria-label="Pilih posisi yang dilamar"
+                                            name="position_id">
                                             <option selected>Pilih posisi yang dilamar</option>
                                             @foreach ($positions as $position)
                                                 <option value="{{ $position->id }}">{{ $position->name }}</option>
@@ -108,74 +112,69 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between my-4">
                                             <h4>Riwayat Pendidikan</h4>
-                                            <button class="btn btn-success">
+                                            <button class="btn btn-success btn-tambah-pendidikan" type="button">
                                                 Tambah Pendidikan
                                             </button>
                                         </div>
-                                        @for ($i = 0; $i < 3; $i++)
-                                            <div class="row">
+                                        <div class="education-row">
+                                            <div class="row education-item">
                                                 <div class="col-12">
                                                     <div class="float-end mt-3">
-                                                        <button class="btn btn-danger">-</button>
+                                                        <button class="btn btn-danger btn-remove-pendidikan"
+                                                            type="button">-</button>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <label for="nama_universitas" class="form-label">Nama Universitas
                                                         (S1/D3)</label>
-                                                    <input type="text"
-                                                        name="riwayat_pendidikan[{{ $i }}]['nama_universitas']"
+                                                    <input type="text" name="riwayat_pendidikan[0][nama_universitas]"
                                                         class="form-control" id="nama_universitas">
                                                 </div>
                                                 <div class="col-12 col-lg-6">
                                                     <label for="tahun_lulus" class="form-label">Tahun Lulus</label>
-                                                    <input type="text"
-                                                        name="riwayat_pendidikan[{{ $i }}]['tahun_lulus']"
+                                                    <input type="text" name="riwayat_pendidikan[0][tahun_lulus]"
                                                         class="form-control" id="tahun_lulus">
                                                 </div>
                                                 <div class="col-12 col-lg-6">
                                                     <label for="nilai_ipk" class="form-label">IPK (4.00)</label>
-                                                    <input type="text"
-                                                        name="riwayat_pendidikan[{{ $i }}]['nilai_ipk']"
+                                                    <input type="text" name="riwayat_pendidikan[0][nilai_ipk]"
                                                         class="form-control" id="nilai_ipk">
                                                 </div>
                                                 <div class="col-12 col-lg-6">
                                                     <label for="organiasi_diikuti" class="form-label">Organisasi yang
                                                         pernah
                                                         diikuti</label>
-                                                    <input type="text"
-                                                        name="riwayat_pendidikan[{{ $i }}]['organiasi_diikuti']"
+                                                    <input type="text" name="riwayat_pendidikan[0][organiasi_diikuti]"
                                                         class="form-control" id="organiasi_diikuti">
                                                 </div>
                                                 <div class="col-12 col-lg-6">
                                                     <label for="tahun_organisasi" class="form-label">Tahun</label>
-                                                    <input type="text"
-                                                        name="riwayat_pendidikan[{{ $i }}]['tahun_organisasi']"
+                                                    <input type="text" name="riwayat_pendidikan[0][tahun_organisasi]"
                                                         class="form-control" id="tahun_organisasi">
                                                 </div>
                                                 <div class="col-12">
                                                     <label for="jabatan_organisasi" class="form-label">Jabatan</label>
-                                                    <input type="text"
-                                                        name="riwayat_pendidikan[{{ $i }}]['jabatan_organisasi']"
+                                                    <input type="text" name="riwayat_pendidikan[0][jabatan_organisasi]"
                                                         class="form-control" id="jabatan_organisasi">
                                                 </div>
                                             </div>
-                                        @endfor
+                                        </div>
                                         <div class="d-flex justify-content-between my-4">
                                             <h4>Setifikat</h4>
-                                            <button class="btn btn-success">
+                                            <button class="btn btn-success btn-tambah-sertifikat" type="button">
                                                 Tambah Sertifikat
                                             </button>
                                         </div>
-                                        @for ($i = 0; $i < 3; $i++)
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <label for="sertifikat" class="form-label">Serifikat (Jika
-                                                        Ada)</label>
-                                                    <input type="text" name="sertifikat[]" class="form-control"
-                                                        id="sertifikat">
-                                                </div>
+                                        <div class="row certificate-row">
+                                            <div class="col-12 certificate-item">
+                                                <label for="sertifikat" class="form-label">Serifikat (Jika
+                                                    Ada)</label>
+                                                <input type="file" name="sertifikat[]" class="form-control"
+                                                    id="sertifikat">
+                                                <button class="btn btn-danger btn-remove-certificate"
+                                                    type="button">-</button>
                                             </div>
-                                        @endfor
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -226,7 +225,7 @@
                                         <div class="col-12">
                                             <label for="kesiapan_mulai_bekerja" class="form-label">Kapan anda dapat mulai
                                                 bekerja?</label>
-                                            <input type="text" name="kesiapan_mulai_bekerja" class="form-control"
+                                            <input type="date" name="kesiapan_mulai_bekerja" class="form-control"
                                                 id="kesiapan_mulai_bekerja">
                                         </div>
                                         <div class="col-12">
@@ -247,7 +246,7 @@
                                         <div class="mb-3">
                                             <label for="formFile" class="form-label">Silahkan upload CV anda melalui link
                                                 dibawah ini</label>
-                                            <input class="form-control" type="file" id="formFile">
+                                            <input class="form-control" type="file" id="formFile" name="cv">
                                         </div>
                                     </div>
                                 </div>
@@ -265,6 +264,7 @@
     @push('script')
         <script>
             $(document).ready(function() {
+                let iteredu = 1;
                 $('#sesuaiktp').prop('readonly', true);
                 $('input[name="inlineRadioOptionsDomisili"]').on('change', function() {
                     if ($(this).val() === 'samektp') {
@@ -280,6 +280,72 @@
                         $('#sesuaiktp').val($(this).val());
                     }
                 })
+                $('.btn-tambah-pendidikan').on('click', function() {
+                    $('.education-row').append(`
+                        <div class="row education-item">
+                            <div class="col-12">
+                                <div class="float-end mt-3">
+                                    <button class="btn btn-danger btn-remove-pendidikan"
+                                        type="button">-</button>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="nama_universitas" class="form-label">Nama Universitas
+                                    (S1/D3)</label>
+                                <input type="text" name="riwayat_pendidikan[${iteredu}][nama_universitas]"
+                                    class="form-control" id="nama_universitas">
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for="tahun_lulus" class="form-label">Tahun Lulus</label>
+                                <input type="text" name="riwayat_pendidikan[${iteredu}][tahun_lulus]"
+                                    class="form-control" id="tahun_lulus">
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for="nilai_ipk" class="form-label">IPK (4.00)</label>
+                                <input type="text" name="riwayat_pendidikan[${iteredu}][nilai_ipk]"
+                                    class="form-control" id="nilai_ipk">
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for="organiasi_diikuti" class="form-label">Organisasi yang
+                                    pernah
+                                    diikuti</label>
+                                <input type="text"
+                                    name="riwayat_pendidikan[${iteredu}][organiasi_diikuti]"
+                                    class="form-control" id="organiasi_diikuti">
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for="tahun_organisasi" class="form-label">Tahun</label>
+                                <input type="text" name="riwayat_pendidikan[${iteredu}][tahun_organisasi]"
+                                    class="form-control" id="tahun_organisasi">
+                            </div>
+                            <div class="col-12">
+                                <label for="jabatan_organisasi" class="form-label">Jabatan</label>
+                                <input type="text"
+                                    name="riwayat_pendidikan[${iteredu}][jabatan_organisasi]"
+                                    class="form-control" id="jabatan_organisasi">
+                            </div>
+                        </div>
+                    `);
+                    iteredu++;
+                });
+                $(document).on('click', '.btn-remove-pendidikan', function() {
+                    $(this).parents('.education-item').remove();
+                });
+                $('.btn-tambah-sertifikat').on('click', function() {
+                    $('.certificate-row').append(`
+                        <div class="col-12 certificate-item">
+                            <label for="sertifikat" class="form-label">Serifikat (Jika
+                                Ada)</label>
+                            <input type="file" name="sertifikat[]" class="form-control"
+                                id="sertifikat">
+                            <button class="btn btn-danger btn-remove-certificate"
+                                type="button">-</button>
+                        </div>
+                    `)
+                });
+                $(document).on('click', '.btn-remove-certificate', function() {
+                    $(this).parents('.certificate-item').remove();
+                });
             })
         </script>
     @endpush
