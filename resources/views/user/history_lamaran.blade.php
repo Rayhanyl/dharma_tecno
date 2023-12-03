@@ -41,10 +41,6 @@
                                                         <td class="text-center">
                                                             <div class="btn-group gap-2" role="group"
                                                                 aria-label="Basic example">
-                                                                <a class="btn btn-sm bg-gradient-info rounded-pill btn-approval"
-                                                                    data-id-application="{{ $item->id }}">
-                                                                    Approval
-                                                                </a>
                                                                 <a href="{{ route('view.data.applicant', ['id' => $item->id]) }}"
                                                                     class="btn btn-sm btn-primary rounded-pill">Data
                                                                     Applicant</a>
@@ -65,26 +61,6 @@
         </div>
     </section>  
 
-    {{-- Modal --}}
-    <div class="modal fade" id="approvalModal" tabindex="-1" role="dialog" aria-labelledby="approvalModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="approvalModalLabel">Approval</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div id="loader-approval"></div>
-                    <div id="detail-form-approval"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- Modal --}}
-
     @endsection
 
     @push('script')
@@ -100,43 +76,6 @@
                     [0, 'asc']
                 ],
             });
-
-            $('.btn-approval').on('click', function(e) {
-                e.preventDefault();
-                const idApplication = $(this).data('id-application');
-                getModalApproval(idApplication);
-                $("#approvalModal").modal("show");
         });
-        });
-
-        // Detail description case study product
-        function getModalApproval(idApplication) {
-            let url = "{{ route('ajax.modal.approval', ['application' => ':application']) }}"
-            url = url.replace(':application', idApplication);
-            $.ajax({
-                type: "GET",
-                url,
-                dataType: 'html',
-                data: {
-                    application: idApplication,
-                },
-                beforeSend: function() {
-                    $('#loader-approval').html(
-                        '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>'
-                    );
-                },
-                success: function(data) {
-                    $('#detail-form-approval').html(data);
-                },
-                complete: function() {
-                    $('#loader-approval').html('');
-                },
-                error: function(xhr, ajaxOptions, thrownError) {
-                    var pesan = xhr.status + " " + thrownError + "\n" + xhr.responseText;
-                    $('#detail-form-approval').html(pesan);
-                },
-            });
-        }
-
     </script>
     @endpush
