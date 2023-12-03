@@ -15,13 +15,18 @@
                             @if (Auth::user()->role == 'applicant')
                                 @if (
                                     $application->status == 'approved' ||
-                                        $application->status == 'processed' ||
-                                        $application->status == 'interviewed' ||
-                                        $application->status == 'accepted')
+                                    $application->status == 'processed' ||
+                                    $application->status == 'interviewed'
+                                    )
                                     <h4 class="fw-bold text-warning">
                                         <i class="fa fa-warning"></i>
                                         Lamaran sedang dalam proses seleksi
                                     </h4>
+                                
+                                @elseif ($application->status == 'accepted')
+                                    <h4 class="fw-bold text-success">
+                                        Anda telah diterima    
+                                    </h4>    
                                 @else
                                     <a href="{{ route('form.calon-karyawan.page') }}"
                                         class="btn bg-gradient-info w-50 mt-4 mb-0 shadow">Lamar</a>
