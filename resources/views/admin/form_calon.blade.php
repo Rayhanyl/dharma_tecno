@@ -169,8 +169,7 @@
                                             <div class="col-12 certificate-item">
                                                 <label for="sertifikat" class="form-label">Serifikat (Jika
                                                     Ada)</label>
-                                                <input type="file" name="sertifikat[]" class="form-control"
-                                                    id="sertifikat">
+                                                <input type="file" name="sertifikat[]" class="form-control" multiple="multiple">
                                                 <button class="btn btn-danger btn-remove-certificate"
                                                     type="button">-</button>
                                             </div>
@@ -336,8 +335,7 @@
                         <div class="col-12 certificate-item">
                             <label for="sertifikat" class="form-label">Serifikat (Jika
                                 Ada)</label>
-                            <input type="file" name="sertifikat[]" class="form-control"
-                                id="sertifikat">
+                            <input type="file" name="sertifikat[]" class="form-control">
                             <button class="btn btn-danger btn-remove-certificate"
                                 type="button">-</button>
                         </div>
