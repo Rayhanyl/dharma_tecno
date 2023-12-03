@@ -25,7 +25,7 @@ return new class extends Migration
             $table->text('leader_job_histories');
             $table->string('reason_to_apply');
             $table->string('salary_expectation');
-            $table->string('facility_expectation');
+            $table->text('facility_expectation');
             $table->date('work_date');
             $table->string('relation_person');
             $table->string('cv');

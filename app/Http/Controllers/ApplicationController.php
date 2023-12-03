@@ -63,6 +63,7 @@ class ApplicationController extends Controller
             $education->university        = $value['nama_universitas'];
             $education->ipk               = $value['nilai_ipk'];
             $education->organizations     = $value['organiasi_diikuti'];
+            $education->graduated_year    = $value['tahun_lulus'];
             $education->year              = $value['tahun_organisasi'];
             $education->position          = $value['jabatan_organisasi'];
             $education->save();

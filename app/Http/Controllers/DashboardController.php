@@ -15,7 +15,8 @@ class DashboardController extends Controller
 {
     public function dashboardView()
     {
-        return view('admin.dashboard');
+        $application = Application::whereUserId(Auth::user()->id)->latest('id')->first();
+        return view('admin.dashboard', compact('application'));
     }
 
     public function dataDiriView()
@@ -31,9 +32,8 @@ class DashboardController extends Controller
 
     public function viewDataApplicant($id)
     {
-        $data = Application::where('id', $id)->with('user', 'position')->get();
-        $education = Education::where('application_id', $id)->get();
-        return view('admin.view_data_applicant', compact('data', 'education'));
+        $data = Application::where('id', $id)->with('user', 'position', 'educations')->get();
+        return view('admin.view_data_applicant', compact('data'));
     }
 
     public function formCalonKaryawanView()
@@ -74,7 +74,7 @@ class DashboardController extends Controller
             Application::where('id', $request->idApplication)->update([
                 'status' => $request->approvalApplication,
             ]);
-    
+
             Alert::toast('Profil berhasil di update', 'success');
             return redirect()->back();
         } catch (\Exception $e) {

@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('application_id');
             $table->text('university');
+            $table->integer('graduated_year');
             $table->string('ipk');
             $table->text('organizations');
-            $table->string('year');
+            $table->integer('year');
             $table->string('position');
             $table->timestamps();
         });

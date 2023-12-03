@@ -12,8 +12,24 @@
                                 untuk mendapatkan pemberitahuan mengenai lowongan pekerjaan atau status lamaran</p>
                         </div>
                         <div class="col-12 col-lg-6 text-center">
-                            <a href="{{ Auth::user()->role === 'admin' ? route('data.calon.page') : route('form.calon-karyawan.page') }}"
-                                class="btn bg-gradient-info w-50 mt-4 mb-0 shadow">{{ Auth::user()->role === 'admin' ? 'Data Calon Pelamar' : 'Lamar' }}</a>
+                            @if (Auth::user()->role == 'applicant')
+                                @if (
+                                    $application->status == 'approved' ||
+                                        $application->status == 'processed' ||
+                                        $application->status == 'interviewed' ||
+                                        $application->status == 'accepted')
+                                    <h4 class="fw-bold text-warning">
+                                        <i class="fa fa-warning"></i>
+                                        Lamaran sedang dalam proses seleksi
+                                    </h4>
+                                @else
+                                    <a href="{{ route('form.calon-karyawan.page') }}"
+                                        class="btn bg-gradient-info w-50 mt-4 mb-0 shadow">Lamar</a>
+                                @endif
+                            @else
+                                <a href="{{ route('data.calon.page') }}"
+                                    class="btn bg-gradient-info w-50 mt-4 mb-0 shadow">Data Calon Pelamar</a>
+                            @endif
                         </div>
                     </div>
                 </div>
