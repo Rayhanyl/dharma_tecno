@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
-    <main class="main-content mt-0">
+    <main class="main-content" style="margin-top:7rem;">
         <section>
-            <div class="page-header" style="min-height: 500vh">
-                <div class="container">
+            <div class="page-header">
+                <div class="container my-2">
                     <div class="row">
                         <form action="{{ route('application.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="col-12 bg-gradient-success shadow py-2" style="border-radius: 25px;">
+                            <div class="col-12 bg-gradient-success shadow py-2 px-2" style="border-radius: 25px;">
                                 <h3 class="text-white">Pengisian Data Calon Karyawan</h3>
                             </div>
                             <div class="col-12 my-3">

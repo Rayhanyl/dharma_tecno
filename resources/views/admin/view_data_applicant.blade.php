@@ -12,6 +12,21 @@
                 </div>
                 @foreach ($data as $item)
                     
+                <div class="col-12 my-2">
+                    <h5>Posisi yang dilamar : {{ $item->position->name }}</h5>
+                    @if($item->status == 'approved')
+                        <p class="text-uppercase">Berkas Diterima</p>
+                    @elseif($item->status == 'interviewed')
+                        <p class="text-uppercase">Tahap Interview</p>
+                    @elseif($item->status == 'accepted')
+                        <p class="text-uppercase">Lamaran Diterima</p>
+                    @elseif($item->status == 'rejected')
+                        <p class="text-uppercase">Tidak Lolos</p>
+                    @else
+                        <p class="text-uppercase">Berkas Diproses</p>
+                    @endif
+                </div>
+
                 <div class="row my-2">
                     {{-- Data diri --}}
                     <div class="col-12">

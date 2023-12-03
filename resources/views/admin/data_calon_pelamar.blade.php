@@ -30,21 +30,22 @@
                                                 <tbody>
                                                     @foreach ($data as $item)
                                                     <tr>
-                                                        <td class="text-center">{{ $loop->iteration }}</td>
-                                                        <td class="text-center">{{ $item->fullname }}</td>
-                                                        <td class="text-center">
+                                                        <td class="text-center text-capitalize">{{ $loop->iteration }}</td>
+                                                        <td class="text-center text-capitalize">{{ $item->fullname }}</td>
+                                                        <td class="text-center text-capitalize">
                                                             {{ \Carbon\Carbon::parse($item->birthdate)->age }} th</td>
-                                                        <td class="text-center">{{ $item->position->name }}</td>
-                                                        <td class="text-center">
+                                                        <td class="text-center text-capitalize">{{ $item->position->name }}</td>
+                                                        <td class="text-center text-capitalize">
                                                             {{ \Carbon\Carbon::parse($item->creaeted_at)->format('d F Y') }}
                                                         </td>
-                                                        <td class="text-center">{{ $item->status }}</td>
+                                                        <td class="text-center text-capitalize">{{ $item->status }}</td>
                                                         <td class="text-center">
                                                             <div class="btn-group gap-2" role="group"
                                                                 aria-label="Basic example">
-                                                                <a class="btn btn-sm bg-gradient-info rounded-pill"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#approvalModal">Approval</a>
+                                                                <a class="btn btn-sm bg-gradient-info rounded-pill btn-approval"
+                                                                    data-id-application="{{ $item->id }}">
+                                                                    Approval
+                                                                </a>
                                                                 <a href="{{ route('view.data.applicant', ['id' => $item->id]) }}"
                                                                     class="btn btn-sm btn-primary rounded-pill">Data
                                                                     Applicant</a>
@@ -77,11 +78,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn bg-gradient-primary">Save changes</button>
+                    <div id="loader-approval"></div>
+                    <div id="detail-form-approval"></div>
                 </div>
             </div>
         </div>
@@ -103,7 +101,44 @@
                     [0, 'asc']
                 ],
             });
+
+            $('.btn-approval').on('click', function(e) {
+                e.preventDefault();
+                const idApplication = $(this).data('id-application');
+                getModalApproval(idApplication);
+                $("#approvalModal").modal("show");
+            });
         });
+
+        // Detail description case study product
+        function getModalApproval(idApplication) {
+            let url = "{{ route('ajax.modal.approval', ['application' => ':application']) }}"
+            url = url.replace(':application', idApplication);
+            $.ajax({
+                type: "GET",
+                url,
+                dataType: 'html',
+                data: {
+                    application: idApplication,
+                },
+                beforeSend: function() {
+                    $('#loader-approval').html(
+                        '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>'
+                    );
+                },
+                success: function(data) {
+                    $('#detail-form-approval').html(data);
+                },
+                complete: function() {
+                    $('#loader-approval').html('');
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    var pesan = xhr.status + " " + thrownError + "\n" + xhr.responseText;
+                    $('#detail-form-approval').html(pesan);
+                },
+            });
+        }
+
 
     </script>
     @endpush

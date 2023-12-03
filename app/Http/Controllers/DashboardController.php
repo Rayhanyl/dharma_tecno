@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Application;
-use App\Models\Education;
 use App\Models\Position;
+use App\Models\Education;
+use App\Models\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+use RealRashid\SweetAlert\Facades\Alert;
+use function PHPUnit\Framework\returnCallback;
 
 class DashboardController extends Controller
 {
@@ -55,6 +58,28 @@ class DashboardController extends Controller
         } else {
             $data = Application::where('user_id', $user->id)->with('user', 'position')->get();
             return view('user.history_lamaran', compact('data'));
+        }
+    }
+
+    public function modalApproval($application)
+    {
+        $data = Application::where('id', $application)->get();
+        return view('ajax.modal_approval', compact('data'));
+    }
+
+    public function updateApproval(Request $request)
+    {
+        try {
+            // Update user data
+            Application::where('id', $request->idApplication)->update([
+                'status' => $request->approvalApplication,
+            ]);
+    
+            Alert::toast('Profil berhasil di update', 'success');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            Alert::warning('Error', 'Contact Developer to Fix This');
+            return redirect()->back();
         }
     }
 }
