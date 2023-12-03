@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<main class="main-content mt-0">
+<main class="main-content" style="margin-top: 7rem;">
     <section class="min-vh-100 mb-8">
-        <div class="page-header" style="min-height:140vh;">
+        <div class="page-header">
             <div class="container">
                 <div class="row">
                     <div class="col-12">

@@ -14,6 +14,7 @@
     <!-- Nucleo Icons -->
     <link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/sweetalert2.min.css') }}" rel="stylesheet" />
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
@@ -29,7 +30,7 @@
 </head>
 
 <body class="">
-    <div class="container position-sticky z-index-sticky top-0">
+    <div class="container z-index-sticky top-0">
         <div class="row">
             <div class="col-12">
                 <!-- Navbar -->

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-<main class="main-content mt-0">
+<main class="main-content" style="margin-top:7rem;">
     <section>
-        <div class="page-header" style="margin-top:7rem;min-height:100vh;">
-            <div class="container">
+        <div class="page-header">
+            <div class="container my-2">
                 <div class="row gap-4">
                     <div class="col-12 bg-gradient-success shadow py-2" style="border-radius: 25px;">
                         <h3 class="text-white">History Lamaran</h3>
@@ -17,21 +17,38 @@
                                             <table class="table table-striped " id="table-data-histroy-lamaran">
                                                 <thead class="table-orange">
                                                     <tr>
-                                                        <th>No</th>
-                                                        <th>Posisi</th>
-                                                        <th>Tanggal Melamar</th>
-                                                        <th>Status</th>
-                                                        <th>Action</th>
+                                                        <th class="text-center">No</th>
+                                                        <th class="text-center">Nama</th>
+                                                        <th class="text-center">Umur</th>
+                                                        <th class="text-center">Posisi</th>
+                                                        <th class="text-center">Tanggal Melamar</th>
+                                                        <th class="text-center">Status</th>
+                                                        <th class="text-center">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($data as $item)
                                                     <tr>
-                                                        <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $item->position->name }}</td>
-                                                        <td>{{ \Carbon\Carbon::parse($item->creaeted_at)->format('d F Y') }}</td>
-                                                        <td>{{ $item->status }}</td>
-                                                        <td>#</td>
+                                                        <td class="text-center">{{ $loop->iteration }}</td>
+                                                        <td class="text-center">{{ $item->fullname }}</td>
+                                                        <td class="text-center">
+                                                            {{ \Carbon\Carbon::parse($item->birthdate)->age }} th</td>
+                                                        <td class="text-center">{{ $item->position->name }}</td>
+                                                        <td class="text-center">
+                                                            {{ \Carbon\Carbon::parse($item->creaeted_at)->format('d F Y') }}
+                                                        </td>
+                                                        <td class="text-center">{{ $item->status }}</td>
+                                                        <td class="text-center">
+                                                            <div class="btn-group gap-2" role="group"
+                                                                aria-label="Basic example">
+                                                                <a class="btn btn-sm bg-gradient-info rounded-pill"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#approvalModal">Approval</a>
+                                                                <a href="{{ route('view.data.applicant', ['id' => $item->id]) }}"
+                                                                    class="btn btn-sm btn-primary rounded-pill">Data
+                                                                    Applicant</a>
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>

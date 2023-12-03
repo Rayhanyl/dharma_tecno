@@ -57,7 +57,7 @@
 <script src="{{ asset ('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
 <script src="{{ asset ('assets/js/jquery-3.6.1.js') }}"></script>
 <script src="{{ asset ('assets/js/datatables.min.js') }}"></script>
-@include('sweetalert::alert')
+<script src="{{ asset ('assets/js/sweetalert2.min.js') }}"></script>
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -70,6 +70,7 @@
 
 </script>
 <script src="{{ asset ('assets/js/soft-ui-dashboard.min.js?v=1.0.7') }}"></script>
+@include('sweetalert::alert')
 @stack('script')
 </body>
 </html>
