@@ -14,8 +14,10 @@ class AuthenticationController extends Controller
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
+            Alert::toast('Berhasil login', 'success');
             return redirect()->route('dashboard.page');
         } else {
+            Alert::toast('Email & Password Doesnt match in our database', 'warning');
             return redirect()->back()->with('error', "Email & Password Doesn't match in our database");
         }
     }
@@ -25,6 +27,7 @@ class AuthenticationController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        Alert::toast('Berhasil logout', 'success');
         return redirect()->route('auth.login.page');
     }
 
@@ -105,7 +108,6 @@ class AuthenticationController extends Controller
         }
     }
       
-
     public function loginView()
     {
         return view('authentication.login');

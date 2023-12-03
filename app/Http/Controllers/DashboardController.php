@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
+use App\Models\Education;
 use App\Models\Position;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,8 +26,9 @@ class DashboardController extends Controller
     }
 
     public function viewDataApplicant($id){
-        $data = Application::where('id', $id)->get();
-        return view('admin.view_data_applicant');
+        $data = Application::where('id', $id)->with('user', 'position')->get();
+        $education = Education::where('application_id', $id)->get();
+        return view('admin.view_data_applicant', compact('data','education'));
     }
 
     public function formCalonKaryawanView()
@@ -41,6 +43,7 @@ class DashboardController extends Controller
         $data = Application::whereIn('status', $statuses)->get();
         return view('admin.data_calon_pelamar',compact('data'));
     }
+
     public function historyPelamarView()
     {
         $user = Auth::user();

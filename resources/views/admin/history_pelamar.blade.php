@@ -29,16 +29,14 @@
                                                 <tbody>
                                                     @foreach ($data as $item)
                                                     <tr>
-                                                        <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $item->fullname }}</td>
-                                                        <td>{{ \Carbon\Carbon::parse($item->birthdate)->age }} th</td>
-                                                        <td>{{ $item->position->name }}</td>
-                                                        <td>{{ \Carbon\Carbon::parse($item->creaeted_at)->format('d F Y') }}</td>
-                                                        <td>{{ $item->status }}</td>
-                                                        <td>
+                                                        <td class="text-center">{{ $loop->iteration }}</td>
+                                                        <td class="text-center">{{ $item->fullname }}</td>
+                                                        <td class="text-center">{{ \Carbon\Carbon::parse($item->birthdate)->age }} th</td>
+                                                        <td class="text-center">{{ $item->position->name }}</td>
+                                                        <td class="text-center">{{ \Carbon\Carbon::parse($item->creaeted_at)->format('d F Y') }}</td>
+                                                        <td class="text-center">{{ $item->status }}</td>
+                                                        <td class="text-center">
                                                             <div class="btn-group gap-2" role="group" aria-label="Basic example">
-                                                                <a class="btn btn-sm btn-success rounded-pill">Approved</a>
-                                                                <a class="btn btn-sm btn-danger rounded-pill">Rejected</a>
                                                                 <a href="{{ route('view.data.applicant', ['id' => $item->id]) }}" class="btn btn-sm btn-primary rounded-pill">Data Applicant</a>
                                                             </div>
                                                         </td>
