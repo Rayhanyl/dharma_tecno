@@ -38,4 +38,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/data/calon-karyawan', [DashboardController::class, 'dataCalonPelamarView'])->name('data.calon.page');
     Route::get('/view/data/applicant/{id}', [DashboardController::class, 'viewDataApplicant'])->name('view.data.applicant');
     Route::get('/history/pelamar', [DashboardController::class, 'historyPelamarView'])->name('data.pelamar.page');
+    Route::get('/modal/approval/{application}', [DashboardController::class, 'modalApproval'])->name('ajax.modal.approval');
+    Route::post('/update/approval', [DashboardController::class, 'updateApproval'])->name('update.approval');
 });

@@ -32,7 +32,6 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
         $application = Application::create([
             'fullname'              => $request->fullname,
             'identity_number'       => $request->noidentitas,
