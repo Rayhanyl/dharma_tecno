@@ -57,25 +57,29 @@ class ApplicationController extends Controller
         $application->position_id           = $request->position_id;
         $application->user_id               = Auth::User()->id;
         $application->save();
-        foreach ($request->riwayat_pendidikan as $value) {
-            $education = new Education;
-            $education->application_id    = $application->id;
-            $education->university        = $value['nama_universitas'];
-            $education->ipk               = $value['nilai_ipk'];
-            $education->organizations     = $value['organiasi_diikuti'];
-            $education->graduated_year    = $value['tahun_lulus'];
-            $education->year              = $value['tahun_organisasi'];
-            $education->position          = $value['jabatan_organisasi'];
-            $education->save();
-        }
-        foreach ($request->sertifikat as $idx => $value) {
-            $certificate = new Certificate;
-            if ($request->hasFile('sertifikat')[$idx]) {
-                $request->file('sertifikat')[$idx]->storeAs('public/media/certificates', $request->sertifikat[$idx]->hashName());
+        if ($request->riwayat_pendidikan) {
+            foreach ($request->riwayat_pendidikan as $value) {
+                $education = new Education;
+                $education->application_id    = $application->id;
+                $education->university        = $value['nama_universitas'];
+                $education->ipk               = $value['nilai_ipk'];
+                $education->organizations     = $value['organiasi_diikuti'];
+                $education->graduated_year    = $value['tahun_lulus'];
+                $education->year              = $value['tahun_organisasi'];
+                $education->position          = $value['jabatan_organisasi'];
+                $education->save();
             }
-            $certificate->application_id    = $application->id;
-            $certificate->certificate       = $request->sertifikat[$idx]->hashName();
-            $certificate->save();
+        }
+        if ($request->sertifikat) {
+            foreach ($request->sertifikat as $idx => $value) {
+                $certificate = new Certificate;
+                // if ($request->hasFile('sertifikat')[$idx]) {
+                $request->file('sertifikat')[$idx]->storeAs('public/media/certificates', $request->sertifikat[$idx]->hashName());
+                // }
+                $certificate->application_id    = $application->id;
+                $certificate->certificate       = $request->sertifikat[$idx]->hashName();
+                $certificate->save();
+            }
         }
         return redirect()->back();
     }
