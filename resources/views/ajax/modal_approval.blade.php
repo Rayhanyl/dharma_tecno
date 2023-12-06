@@ -13,11 +13,12 @@
                     @else
                         <option value="accepted">Lamaran Diterima</option>
                     @endif
-                    <option>Rejected</option>
+                    <option value="rejected">Rejected</option>
                 @endforeach
             </select>
         </div>
         @if ($item->status === 'processed')
+        <div id="interviewApplication" style="display: none">
             <div class="col-12 form-group mb-2">
                 <label for="interviewer" class="form-label">Interviewer</label>
                 <input type="text" class="form-control" name="interviewer" id="interviewer">
@@ -30,6 +31,7 @@
                 <label for="interview_location" class="form-label">Interview Location (Address/Link Meet)</label>
                 <input type="text" class="form-control" name="interview_location" id="interview_location">
             </div>
+        </div>
         @endif
         <div class="col-12 text-end">
             <button type="submit" form="form-approval" class="btn bg-gradient-primary">Save changes</button>
