@@ -54,7 +54,7 @@
                                                     <option value="" selected disabled>Pilih Agama</option>
                                                     <option value="islam">Islam</option>
                                                     <option value="protestant">Protestan</option>
-                                                    <option value="catholic">Katolik</option>
+                                                    <option value="chatolic">Katolik</option>
                                                     <option value="confucius">Konghucu</option>
                                                     <option value="buddha">Budha</option>
                                                     <option value="hindu">Hindu</option>
@@ -121,12 +121,12 @@
                                                 <div class="col-12">
                                                     <div class="float-end mt-3">
                                                         <button class="btn btn-danger btn-remove-pendidikan"
-                                                            type="button">-</button>
+                                                            type="button">Hapus riwayat</button>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <label for="nama_universitas" class="form-label">Nama Universitas
-                                                        (S1/D3)</label>
+                                                        (S1/D3) Pendidikan Terakhir</label>
                                                     <input type="text" name="riwayat_pendidikan[0][nama_universitas]"
                                                         class="form-control" id="nama_universitas">
                                                 </div>
