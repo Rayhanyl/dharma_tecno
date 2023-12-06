@@ -111,6 +111,12 @@
                     getModalApproval(idApplication);
                     $("#approvalModal").modal("show");
                 });
+                $(document).on('change', '#approvalApplication', function() {
+                    $('#interviewApplication').show();
+                    if ($(this).val() === 'interviewed') {
+                        $('#interviewApplication').hide();
+                    }
+                });
             });
 
             // Detail description case study product
