@@ -14,7 +14,7 @@
                 <div class="col-12 my-2">
                     <h5>Posisi yang dilamar : {{ $item->position->name }}</h5>
                     @if($item->status == 'interviewed')
-                    <p class="text-uppercase">Tahap Interview</p>>
+                    <p class="text-uppercase">Tahap Interview</p>
                     @elseif($item->status == 'accepted')
                     <p class="text-uppercase">Lamaran Diterima</p>
                     @elseif($item->status == 'rejected')
@@ -27,28 +27,34 @@
                 <div class="row my-2">
 
                     @if ($item->status == 'interviewed')
+                        @if (Auth::user()->role == 'applicant')
                         <div class="col-12 my-3">
                             <div class="card shadow rounded-4">
                                 <div class="card-body row">
                                     <h6>Jadwal Interview</h6>
                                     <hr>
-                                    <div class="col-12 col-lg-6 row">
-                                        <div class="col-6">
-                                            <h6>Pewawancara</h6>
-                                            <p>Bpk. System of down</p>
+                                    <div class="col-12 row">
+                                        <div class="col-4">
+                                            <h6>Tanggal Interview</h6>
+                                            <p>{{ $item->interview_date }}</p>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-4">
+                                            <h6>Pewawancara</h6>
+                                            <p>{{ $item->interviewer }}</p>
+                                        </div>
+                                        <div class="col-4">
                                             <h6>Pelamar</h6>
-                                            <p>Rayhan</p>
+                                            <p>{{ $item->fullname }}</p>
                                         </div>
                                         <div class="col-12">
                                             <h6>Address / Link meet</h6>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, nulla! Cum totam, error dicta officiis voluptatem est suscipit ea, temporibus minus dolorem deserunt consectetur in!</p>
+                                            <p>{{ $item->interview_location }}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endif
                     @endif
 
                     <div class="col-12 col-lg-6">

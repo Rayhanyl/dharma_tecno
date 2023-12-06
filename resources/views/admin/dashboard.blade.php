@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <main class="main-content mt-0">
+    <main class="main-content" style="margin-top: 7rem;">
         <section>
-            <div class="page-header min-vh-75">
+            <div class="page-header">
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-lg-6">
@@ -53,18 +53,22 @@
                                                 <h6 class="text-uppercase fw-bolder">Jadwal Interview</h6>
                                                 <hr>
                                                 <div class="row">
-                                                    <div class="col-12 col-lg-6 row">
-                                                        <div class="col-6">
-                                                            <h6>Pewawancara</h6>
-                                                            <p>Bpk. System of down</p>
+                                                    <div class="col-12 col-lg-12 row">
+                                                        <div class="col-4">
+                                                            <h6>Tanggal Interview</h6>
+                                                            <p>{{ $application->interview_date }}</p>
                                                         </div>
-                                                        <div class="col-6">
+                                                        <div class="col-4">
+                                                            <h6>Pewawancara</h6>
+                                                            <p class="text-capitalize">{{ $application->interviewer }}</p>
+                                                        </div>
+                                                        <div class="col-4">
                                                             <h6>Pelamar</h6>
-                                                            <p>Rayhan</p>
+                                                            <p class="text-capitalize">{{ $application->fullname }}</p>
                                                         </div>
                                                         <div class="col-12">
                                                             <h6>Address / Link meet</h6>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, nulla! Cum totam, error dicta officiis voluptatem est suscipit ea, temporibus minus dolorem deserunt consectetur in!</p>
+                                                            <p>{{ $application->interview_location }}</p>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-lg-6">
