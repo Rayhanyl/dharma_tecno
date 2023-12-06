@@ -31,6 +31,7 @@ class ApplicationSeeder extends Seeder
             'relation_person'        => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nesciunt consequuntur officiis. Aliquam.',
             'work_date'              => Carbon::now(),
             'cv'                     => 'CV',
+            'cv_ext'                 => '.pdf',
             'status'                 => 'processed',
             'position_id'            => 2,
             'user_id'                => 2

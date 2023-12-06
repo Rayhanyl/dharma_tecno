@@ -53,6 +53,7 @@ class ApplicationController extends Controller
         $application->work_date             = $request->kesiapan_mulai_bekerja;
         $application->relation_person       = $request->kenalan_didalam_perusahaan;
         $application->cv                    = $request->cv->hashName();
+        $application->cv_ext                = $request->cv->getClientOriginalExtension();
         $application->status                = 'processed';
         $application->position_id           = $request->position_id;
         $application->user_id               = Auth::User()->id;
@@ -78,6 +79,7 @@ class ApplicationController extends Controller
                 // }
                 $certificate->application_id    = $application->id;
                 $certificate->certificate       = $request->sertifikat[$idx]->hashName();
+                $certificate->certificate_ext   = $request->sertifikat[$idx]->getClientOriginalExtension();
                 $certificate->save();
             }
         }

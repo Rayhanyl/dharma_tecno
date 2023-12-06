@@ -70,10 +70,21 @@ class DashboardController extends Controller
     public function updateApproval(Request $request)
     {
         try {
-            // Update user data
-            Application::where('id', $request->idApplication)->update([
+            $application = Application::where('id', $request->idApplication)->first();
+            $value = [];
+            if ($application->status == 'processed') {
+                $value = [
+                    'interview_date' => $request->interview_date,
+                    'interviewer' => $request->interviewer,
+                    'interview_location' => $request->interview_location,
+                ];
+            }
+            $status = [
                 'status' => $request->approvalApplication,
-            ]);
+            ];
+            $merge = array_merge($value, $status);
+            $application->update($merge);
+            // Update user data
 
             Alert::toast('Profil berhasil di update', 'success');
             return redirect()->back();

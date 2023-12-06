@@ -13,17 +13,15 @@
                         <div class="col-12">
                             <div class="card shadow rounded-4">
                                 <div class="card-body">
-                                    <h6>Posisi yang dilamar : Manager</h6>
+                                    <h6>Posisi yang dilamar : {{ $application->position->name }}</h6>
                                     @if ($application)
                                         @if ($application->status == 'rejected')
                                             <h4 class="text-danger text-center">Maaf, anda tidak lolos seleksi</h4>
                                         @else
                                             <div class="progress-track">
                                                 <ul id="progressbar">
-                                                    <li class="step0 {{ $application->status == 'processed' || $application->status == 'approved' || $application->status == 'interviewed' || $application->status == 'accepted' ? 'active' : '' }}"
+                                                    <li class="step0 {{ $application->status == 'processed' || $application->status == 'interviewed' || $application->status == 'accepted' ? 'active' : '' }}"
                                                         id="step1">Berkas Diproses</li>
-                                                    <li class="step0 {{ $application->status == 'approved' || $application->status == 'interviewed' || $application->status == 'accepted' ? 'active' : '' }}"
-                                                        id="step2">Berkas Diterima</li>
                                                     <li class="step0 {{ $application->status == 'interviewed' || $application->status == 'accepted' ? 'active' : '' }}"
                                                         id="step3">Tahap Interview</li>
                                                     <li class="step0 {{ $application->status == 'accepted' ? 'active' : '' }}"
@@ -60,7 +58,7 @@
     #progressbar li {
         list-style-type: none;
         font-size: 0.9rem;
-        width: 25%;
+        width: 33.3%;
         float: left;
         position: relative;
         font-weight: 700;
