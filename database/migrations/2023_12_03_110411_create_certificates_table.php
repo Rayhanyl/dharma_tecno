@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('application_id');
             $table->string('certificate');
+            $table->string('certificate_ext');
             $table->timestamps();
         });
     }

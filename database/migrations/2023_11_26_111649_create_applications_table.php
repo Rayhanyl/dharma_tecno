@@ -29,7 +29,11 @@ return new class extends Migration
             $table->date('work_date');
             $table->string('relation_person');
             $table->string('cv');
-            $table->enum('status', ['processed', 'approved', 'rejected', 'interviewed', 'accepted']);
+            $table->string('cv_ext');
+            $table->date('interview_date')->nullable();
+            $table->string('interviewer')->nullable();
+            $table->string('interview_location')->nullable();
+            $table->enum('status', ['processed', 'rejected', 'interviewed', 'accepted']);
             $table->foreignId('position_id');
             $table->foreignId('user_id');
             $table->timestamps();
