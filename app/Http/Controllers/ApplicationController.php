@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Education;
 use App\Models\Application;
+use App\Models\Certificate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\StoreApplicationRequest;
 use App\Http\Requests\UpdateApplicationRequest;
-use App\Models\Certificate;
-use App\Models\Education;
 
 class ApplicationController extends Controller
 {
@@ -83,7 +84,9 @@ class ApplicationController extends Controller
                 $certificate->save();
             }
         }
-        return redirect()->back();
+
+        Alert::toast('Pendaftaran berhasil, Form lamaran akan segera di proses', 'success');
+        return redirect()->route('data.pelamar.page');
     }
 
     /**

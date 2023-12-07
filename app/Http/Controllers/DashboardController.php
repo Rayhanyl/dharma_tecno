@@ -93,4 +93,23 @@ class DashboardController extends Controller
             return redirect()->back();
         }
     }
+
+    public function updateInterview(Request $request)
+    {
+        try {
+            $application = Application::where('id', $request->id)->first();
+            $application->update([
+                'interview_date' => $request->interview_date,
+                'interviewer' => $request->interviewer,
+                'interview_location' => $request->interview_location,
+            ]);
+            // Update user data
+
+            Alert::toast('Jadwal berhasil di update', 'success');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            Alert::warning('Error', 'Contact Developer to Fix This');
+            return redirect()->back();
+        }
+    }
 }

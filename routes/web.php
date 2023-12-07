@@ -40,4 +40,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/history/pelamar', [DashboardController::class, 'historyPelamarView'])->name('data.pelamar.page');
     Route::get('/modal/approval/{application}', [DashboardController::class, 'modalApproval'])->name('ajax.modal.approval');
     Route::post('/update/approval', [DashboardController::class, 'updateApproval'])->name('update.approval');
+    Route::post('/update/jadwal/{id}', [DashboardController::class, 'updateInterview'])->name('update.jadwal');
 });

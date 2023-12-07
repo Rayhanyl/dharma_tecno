@@ -1,158 +1,16 @@
 @extends('layouts.app')
 @section('content')
-<main class="main-content" style="margin-top:7rem;">
-    <section>
-        <div class="page-header">
-            <div class="container">
-                <div class="col-12">
-                    <a href="{{ route(app('request')->input('ref') == 'calon_pelamar' ? 'data.calon.page' : 'data.pelamar.page') }}"
-                        class="btn btn-warning">
-                        Back to Data calon pelamar
-                    </a>
-                </div>
-                @foreach ($data as $item)
-                <div class="col-12 my-2">
-                    <h5>Posisi yang dilamar : {{ $item->position->name }}</h5>
-                    @if($item->status == 'interviewed')
-                    <p class="text-uppercase">Tahap Interview</p>
-                    @elseif($item->status == 'accepted')
-                    <p class="text-uppercase">Lamaran Diterima</p>
-                    @elseif($item->status == 'rejected')
-                    <p class="text-uppercase">Tidak Lolos</p>
-                    @else
-                    <p class="text-uppercase">Berkas Diproses</p>
-                    @endif
-                </div>
-
-                <div class="row my-2">
-
-                    @if ($item->status == 'interviewed')
-                        @if (Auth::user()->role == 'applicant')
-                        <div class="col-12 my-3">
-                            <div class="card shadow rounded-4">
-                                <div class="card-body row">
-                                    <h6>Jadwal Interview</h6>
-                                    <hr>
-                                    <div class="col-12 row">
-                                        <div class="col-4">
-                                            <h6>Tanggal Interview</h6>
-                                            <p>{{ $item->interview_date }}</p>
-                                        </div>
-                                        <div class="col-4">
-                                            <h6>Pewawancara</h6>
-                                            <p>{{ $item->interviewer }}</p>
-                                        </div>
-                                        <div class="col-4">
-                                            <h6>Pelamar</h6>
-                                            <p>{{ $item->fullname }}</p>
-                                        </div>
-                                        <div class="col-12">
-                                            <h6>Alamat / Link meet interview</h6>
-                                            <p>{{ $item->interview_location }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @else
-                        <div class="col-12 my-3">
-                            <div class="card shadow rounded-4">
-                                <div class="card-body">
-                                    <h6>Update Jadwal Interview</h6>
-                                    <hr>
-                                    <form class="row" action="">
-                                        @csrf
-                                        <div class="col-12 col-lg-4">
-                                            <label for="interview_date">Tanggal Interview</label>
-                                            <input type="text" name="interview_date" class="form-control" value="{{ $item->interview_date }}">
-                                        </div>
-                                        <div class="col-12 col-lg-4">
-                                            <label for="interviewer">Pewawancara</label>
-                                            <input type="text" name="interview_date" class="form-control" value="{{ $item->interviewer }}">
-                                        </div>
-                                        <div class="col-12 col-lg-4">
-                                            <label for="pelamar">Pelamar</label>
-                                            <input type="text" name="interview_date" class="form-control" value="{{ $item->fullname }}" readonly>
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="interview_location">Alamat / Link meet interview</label>
-                                            <input type="text" name="interview_location" class="form-control" value="{{ $item->interview_location }}">
-                                        </div>  
-                                        <div class="col-12">
-                                            <button type="submit" class="btn btn bg-gradient-primary rounded-pill my-2">
-                                                Save changes
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        @endif
-                    @endif
-
-                    <div class="col-12 col-lg-6">
-                        <div class="row">
-                            {{-- Data diri --}}
-                            <div class="col-12">
-                                <div class="card shadow rounded-4">
-                                    <div class="card-body row">
-                                        <h4>DATA DIRI (IDENTITAS)</h4>
-                                        <hr>
-                                        <div class="col-12 col-md-6">
-                                            <label for="NamaLengkap" class="form-label">Nama Lengkap</label>
-                                            <input type="text" name="fullname" class="form-control"
-                                                placeholder="Nama Lengkap" id="NamaLengkap"
-                                                value="{{ $item->fullname }}" readonly>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <label for="noidentitas" class="form-label">No Identitas</label>
-                                            <input type="number" name="noidentitas" placeholder="No KTP / SIM"
-                                                class="form-control" id="noidentitas"
-                                                value="{{ $item->identity_number }}" readonly>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <label for="tmptlahir" class="form-label">Tempat Lahir</label>
-                                            <input type="text" name="noidentitas" placeholder="Tempat Lahir"
-                                                class="form-control" id="tmptlahir" value="{{ $item->birthplace }}"
-                                                readonly>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <label for="ttglahir" class="form-label">Tanggal Lahir</label>
-                                            <input type="date" name="ttglahir" placeholder="Tanggal Lahir"
-                                                class="form-control" id="ttglahir" value="{{ $item->birthdate }}"
-                                                readonly>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <label for="agama" class="form-label">Agama</label>
-                                            <select name="agama" id="agama" class="form-select" disabled>
-                                                <option value="{{ $item->religion }}">{{ $item->religion }}</option>
-                                            </select>
-                                            <input type="hidden" name="agama" value="{{ $data->first()->religion }}">
-                                        </div>
-
-                                        <div class="col-12 col-md-6">
-                                            <label for="nohp" class="form-label">No Hp /Telepon Aktif</label>
-                                            <input type="text" name="nohp" placeholder="No Hp / Telepon Aktif"
-                                                class="form-control" id="nohp" value="{{ $item->active_phone }}"
-                                                readonly>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <label for="alamatlengkap" class="form-label">Alamat Lengkap</label>
-                                            <textarea class="form-control" name="alamatlengkap" id="alamatlengkap"
-                                                cols="10" rows="2" disabled>{{ $item->address }}</textarea>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <label for="alamatlengkap" class="form-label">Alamat
-                                                Domisili</label>
-                                            <br>
-                                            <textarea class="form-control" name="sesuaiktp" id="sesuaiktp" cols="10"
-                                                rows="2" disabled>{{ $item->residence_address }}</textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <main class="main-content" style="margin-top:7rem;">
+        <section>
+            <div class="page-header">
+                <div class="container">
+                    <div class="col-12">
+                        <a href="{{ route(app('request')->input('ref') == 'calon_pelamar' ? 'data.calon.page' : 'data.pelamar.page') }}"
+                            class="btn btn-warning">
+                            Back to Data calon pelamar
+                        </a>
                     </div>
+
                     @foreach ($data as $item)
                         <div class="col-12 my-2">
                             <h5>Posisi yang dilamar : {{ $item->position->name }}</h5>
@@ -197,6 +55,46 @@
                                             </div>
                                         </div>
                                     </div>
+                                @else
+                                    <div class="col-12 my-3">
+                                        <div class="card shadow rounded-4">
+                                            <div class="card-body">
+                                                <h6>Update Jadwal Interview</h6>
+                                                <hr>
+                                                <form class="row" action="{{ route('update.jadwal', $item->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <div class="col-12 col-lg-4">
+                                                        <label for="interview_date">Tanggal Interview</label>
+                                                        <input type="date" name="interview_date" class="form-control"
+                                                            value="{{ $item->interview_date }}">
+                                                    </div>
+                                                    <div class="col-12 col-lg-4">
+                                                        <label for="interviewer">Pewawancara</label>
+                                                        <input type="text" name="interviewer" class="form-control"
+                                                            value="{{ $item->interviewer }}">
+
+                                                    </div>
+                                                    <div class="col-12 col-lg-4">
+                                                        <label for="pelamar">Pelamar</label>
+                                                        <input type="text" name="interviewed" class="form-control"
+                                                            value="{{ $item->fullname }}" readonly>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <label for="interview_location">Alamat / Link meet interview</label>
+                                                        <input type="text" name="interview_location" class="form-control"
+                                                            value="{{ $item->interview_location }}">
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <button type="submit"
+                                                            class="btn btn bg-gradient-primary rounded-pill my-2">
+                                                            Save changes
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endif
                             @endif
 
@@ -235,6 +133,7 @@
                                                 <div class="col-12 col-md-6">
                                                     <label for="agama" class="form-label">Agama</label>
                                                     <select name="agama" id="agama" class="form-select" disabled>
+
                                                         <option value="{{ $item->religion }}">{{ $item->religion }}
                                                         </option>
                                                     </select>
@@ -244,9 +143,9 @@
 
                                                 <div class="col-12 col-md-6">
                                                     <label for="nohp" class="form-label">No Hp /Telepon Aktif</label>
-                                                    <input type="text" name="nohp" placeholder="No Hp / Telepon Aktif"
-                                                        class="form-control" id="nohp"
-                                                        value="{{ $item->active_phone }}" readonly>
+                                                    <input type="text" name="nohp"
+                                                        placeholder="No Hp / Telepon Aktif" class="form-control"
+                                                        id="nohp" value="{{ $item->active_phone }}" readonly>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <label for="alamatlengkap" class="form-label">Alamat Lengkap</label>
@@ -448,7 +347,6 @@
                         </div>
                     @endforeach
 
-                </div>
         </section>
     </main>
 @endsection
