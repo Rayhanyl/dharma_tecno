@@ -244,30 +244,109 @@
                             <div class="col-12 my-4">
                                 <div class="card shadow rounded-4">
                                     <div class="card-body">
-                                        <h4>Riwayat Pekerjaan</h4>
-                                        <hr>
-                                        <div class="col-12">
-                                            <textarea class="form-control" name="riwayat_pekerjaan" id="riwayat_pekerjaan" cols="10" rows="2"
-                                                disabled>{{ $item->job_histories }}</textarea>
+                                        <div class="d-flex justify-content-between my-4">
+                                            <h4>Riwayat Pendidikan</h4>
                                         </div>
-                                        <div class="col-12">
-                                            <label for="riwayat_atasan_bawahan" class="form-label">Sebutkan siapa
-                                                yang
-                                                pernah menjadi atasan/bawahan anda saat itu?</label>
-                                            <textarea class="form-control" name="riwayat_atasan_bawahan" id="riwayat_atasan_bawahan" cols="10"
-                                                rows="2" disabled>{{ $item->leader_job_histories }}</textarea>
-                                            <div id="riwayat_atasan_bawahan" class="form-text">Atasan : 3 orang,
-                                                bapak
-                                                a,
-                                                bapal b, ibu c / Bawahan : 5 orang, mas d, mba e, dst.</div>
+                                        <div class="education-row">
+                                            @foreach ($item->educations as $education)
+                                                <div class="row education-item mb-5">
+                                                    <div class="col-12">
+                                                        <label for="nama_universitas" class="form-label">Nama Universitas
+                                                            (S1/D3)
+                                                        </label>
+                                                        <input type="text"
+                                                            name="riwayat_pendidikan[0][nama_universitas]"
+                                                            class="form-control" id="nama_universitas"
+                                                            value="{{ $education->university }}" disabled>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <label for="tahun_lulus" class="form-label">Tahun Lulus</label>
+                                                        <input type="text" name="riwayat_pendidikan[0][tahun_lulus]"
+                                                            class="form-control" id="tahun_lulus"
+                                                            value="{{ $education->graduated_year }}" disabled>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <label for="nilai_ipk" class="form-label">IPK (4.00)</label>
+                                                        <input type="text" name="riwayat_pendidikan[0][nilai_ipk]"
+                                                            class="form-control" id="nilai_ipk"
+                                                            value="{{ $education->ipk }}" disabled>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <label for="organiasi_diikuti" class="form-label">Organisasi yang
+                                                            pernah
+                                                            diikuti</label>
+                                                        <input type="text"
+                                                            name="riwayat_pendidikan[0][organiasi_diikuti]"
+                                                            class="form-control" id="organiasi_diikuti"
+                                                            value="{{ $education->organizations }}" disabled>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <label for="tahun_organisasi" class="form-label">Tahun</label>
+                                                        <input type="text"
+                                                            name="riwayat_pendidikan[0][tahun_organisasi]"
+                                                            class="form-control" id="tahun_organisasi"
+                                                            value="{{ $education->year }}" disabled>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <label for="jabatan_organisasi" class="form-label">Jabatan</label>
+                                                        <input type="text"
+                                                            name="riwayat_pendidikan[0][jabatan_organisasi]"
+                                                            class="form-control" id="jabatan_organisasi"
+                                                            value="{{ $education->position }}" disabled>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                        <div class="d-flex justify-content-between my-4">
+                                            <h4>Sertifikat</h4>
+                                        </div>
+                                        <div class="row certificate-row mb-4">
+                                            @foreach ($item->certificate as $certificate)
+                                                @if ($certificate->certificate_ext === 'pdf')
+                                                    <div class="col-4 certificate-item">
+                                                        <embed
+                                                            src="{{ asset('/storage/media/certificates/' . $certificate->certificate) }}"
+                                                            type="application/pdf" width="100%" height="400px" />
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        <div class="row certificate-row mb-4">
+                                            @foreach ($item->certificate as $certificate)
+                                                @if ($certificate->certificate_ext !== 'pdf')
+                                                    <div class="col-4 certificate-item">
+                                                        <img src="{{ asset('/storage/media/certificates/' . $certificate->certificate) }}"
+                                                            alt="" class="w-100" height="400px"
+                                                            style="object-fit: contain">
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Berkas --}}
+                            <div class="col-12 my-4">
+                                <div class="card shadow rounded-4">
+                                    <div class="card-body">
+                                        <h4>Berkas</h4>
+                                        <hr>
+                                        <div class="mb-3">
+                                            @if ($item->cv_ext === 'pdf')
+                                                <embed src="{{ asset('/storage/media/applications/' . $item->cv) }}"
+                                                    type="application/pdf" width="100%" height="600px" />
+                                            @else
+                                                <img src="{{ asset('/storage/media/applications/' . $item->cv) }}"
+                                                    alt="" class="w-100" style="object-fit: contain">
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
 
         </section>
     </main>
 @endsection
-
