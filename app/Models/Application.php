@@ -28,4 +28,9 @@ class Application extends Model
     {
         return $this->belongsTo(Position::class);
     }
+
+    public function certificate()
+    {
+        return $this->hasMany(Certificate::class);
+    }
 }
