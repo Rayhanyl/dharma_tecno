@@ -169,7 +169,8 @@
                                             <div class="col-12 certificate-item">
                                                 <label for="sertifikat" class="form-label">Serifikat (Jika
                                                     Ada)</label>
-                                                <input type="file" name="sertifikat[]" class="form-control" multiple="multiple">
+                                                <input type="file" name="sertifikat[]" class="form-control"
+                                                    accept=".pdf, .jpeg, .jpg, .png" multiple="multiple">
                                                 <button class="btn btn-danger btn-remove-certificate"
                                                     type="button">-</button>
                                             </div>
@@ -244,8 +245,9 @@
                                         <hr>
                                         <div class="mb-3">
                                             <label for="formFile" class="form-label">Silahkan upload CV anda melalui link
-                                                dibawah ini</label>
-                                            <input class="form-control" type="file" id="formFile" name="cv">
+                                                dibawah ini (.pdf, .jpef, .jpg, .png)</label>
+                                            <input class="form-control" type="file" id="formFile" name="cv"
+                                                accept=".pdf, .jpeg, .jpg, .png">
                                         </div>
                                     </div>
                                 </div>
@@ -335,7 +337,7 @@
                         <div class="col-12 certificate-item">
                             <label for="sertifikat" class="form-label">Serifikat (Jika
                                 Ada)</label>
-                            <input type="file" name="sertifikat[]" class="form-control">
+                            <input type="file" name="sertifikat[]" class="form-control" accept=".pdf, .jpeg, .jpg, .png">
                             <button class="btn btn-danger btn-remove-certificate"
                                 type="button">-</button>
                         </div>

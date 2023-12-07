@@ -32,7 +32,7 @@ class DashboardController extends Controller
 
     public function viewDataApplicant($id)
     {
-        $data = Application::where('id', $id)->with('user', 'position', 'educations')->get();
+        $data = Application::where('id', $id)->with('user', 'position', 'educations', 'certificate')->get();
         return view('admin.view_data_applicant', compact('data'));
     }
 
