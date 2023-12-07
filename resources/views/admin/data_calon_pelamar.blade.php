@@ -114,7 +114,7 @@
                 });
                 $(document).on('change', '#approvalApplication', function() {
                     $('#interviewApplication').show();
-                    if ($(this).val() === 'interviewed') {
+                    if ($(this).val() !== 'interviewed') {
                         $('#interviewApplication').hide();
                     }
                 });
@@ -138,6 +138,7 @@
                     },
                     success: function(data) {
                         $('#detail-form-approval').html(data);
+                        $('#approvalApplication').trigger("change");
                     },
                     complete: function() {
                         $('#loader-approval').html('');
