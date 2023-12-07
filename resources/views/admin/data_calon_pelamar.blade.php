@@ -52,8 +52,7 @@
                                                                             Approval
                                                                         </a>
                                                                         <a href="{{ route('view.data.applicant', ['id' => $item->id]) }}?ref=calon_pelamar"
-                                                                            class="btn btn-sm btn-primary rounded-pill">Data
-                                                                            Applicant</a>
+                                                                            class="btn btn-sm btn-primary rounded-pill">Detail Lamaran</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>

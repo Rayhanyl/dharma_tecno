@@ -252,10 +252,7 @@
                                 </div>
                                 <div class="row certificate-row">
                                     <div class="col-12 certificate-item">
-                                        <label for="sertifikat" class="form-label">Serifikat (Jika
-                                            Ada)</label>
-                                        <input type="file" name="sertifikat[]" class="form-control" multiple="multiple"
-                                            disabled>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -269,11 +266,12 @@
                                 <h4>Berkas</h4>
                                 <hr>
                                 <div class="mb-3">
-                                    <h6>file cv</h6>
-                                </div>
-                                <div class="mb-3">
-                                    <img src="{{ asset('/storage/media/applications/' . $item->cv) }}" alt=""
+                                    @if ($item->cv_ext === 'pdf')
+                                        <embed type="application/pdf" src="{{ asset('/storage/media/applications/' . $item->cv) }}" width="600" height="400"></embed>
+                                    @else
+                                        <img src="{{ asset('/storage/media/applications/' . $item->cv) }}" alt=""
                                         class="w-100" style="object-fit: contain">
+                                    @endif
                                 </div>
                             </div>
                         </div>
