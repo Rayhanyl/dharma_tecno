@@ -47,10 +47,43 @@
                                             <p>{{ $item->fullname }}</p>
                                         </div>
                                         <div class="col-12">
-                                            <h6>Address / Link meet</h6>
+                                            <h6>Alamat / Link meet interview</h6>
                                             <p>{{ $item->interview_location }}</p>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        @else
+                        <div class="col-12 my-3">
+                            <div class="card shadow rounded-4">
+                                <div class="card-body">
+                                    <h6>Update Jadwal Interview</h6>
+                                    <hr>
+                                    <form class="row" action="">
+                                        @csrf
+                                        <div class="col-12 col-lg-4">
+                                            <label for="interview_date">Tanggal Interview</label>
+                                            <input type="text" name="interview_date" class="form-control" value="{{ $item->interview_date }}">
+                                        </div>
+                                        <div class="col-12 col-lg-4">
+                                            <label for="interviewer">Pewawancara</label>
+                                            <input type="text" name="interview_date" class="form-control" value="{{ $item->interviewer }}">
+                                        </div>
+                                        <div class="col-12 col-lg-4">
+                                            <label for="pelamar">Pelamar</label>
+                                            <input type="text" name="interview_date" class="form-control" value="{{ $item->fullname }}" readonly>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="interview_location">Alamat / Link meet interview</label>
+                                            <input type="text" name="interview_location" class="form-control" value="{{ $item->interview_location }}">
+                                        </div>  
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn bg-gradient-primary rounded-pill my-2">
+                                                Save changes
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -250,10 +283,8 @@
                                 <div class="d-flex justify-content-between my-4">
                                     <h4>Sertifikat</h4>
                                 </div>
-                                <div class="row certificate-row">
-                                    <div class="col-12 certificate-item">
-                                        
-                                    </div>
+                                <div class="row">
+                                    {{--  --}}
                                 </div>
                             </div>
                         </div>
@@ -262,14 +293,14 @@
                     {{-- Berkas --}}
                     <div class="col-12 my-4">
                         <div class="card shadow rounded-4">
-                            <div class="card-body">
+                            <div class="card-body row">
                                 <h4>Berkas</h4>
                                 <hr>
-                                <div class="mb-3">
-                                    @if ($item->cv_ext === 'pdf')
-                                        <embed type="application/pdf" src="{{ asset('/storage/media/applications/' . $item->cv) }}" width="600" height="400"></embed>
+                                <div class="col-12 mb-3">
+                                    @if ($item->cv_ext == 'pdf' || $item->cv_ext == '.pdf')
+                                        <embed src="{{ asset('/storage/media/applications/' . $item->cv) }}" type="application/pdf" width="100%" height="600px">
                                     @else
-                                        <img src="{{ asset('/storage/media/applications/' . $item->cv) }}" alt=""
+                                        <img src="{{ asset('/storage/media/applications/' . $item->cv) }}" alt="Pict"
                                         class="w-100" style="object-fit: contain">
                                     @endif
                                 </div>
