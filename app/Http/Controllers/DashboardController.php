@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Position;
 use App\Models\Education;
 use App\Models\Application;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use function PHPUnit\Framework\returnCallback;
 
@@ -17,6 +20,32 @@ class DashboardController extends Controller
     {
         $application = Application::whereUserId(Auth::user()->id)->latest('id')->first();
         return view('admin.dashboard', compact('application'));
+    }
+
+    public function interviewerView(){
+        return view('admin.interviewer');
+    }
+
+    public function createInterviewerView(){
+        return view('admin.create_interviewer');
+    }
+
+    public function storeUserInterviewer(Request $request){    
+        try {
+            User::create([
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'phone_number' => '+62' . $request->phone_number,
+                'role' => 'interviewer',
+            ]);
+            Alert::toast('Berhasil membuat akun', 'success');
+            return redirect()->route('interviewer.page');
+        } catch (\Throwable $e) {
+            Alert::warning('Error', 'Contact Developer to Fix This');
+            return redirect()->back();
+        }
     }
 
     public function dataDiriView()

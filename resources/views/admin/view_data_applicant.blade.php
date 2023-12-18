@@ -48,7 +48,7 @@
                                                         <p>{{ $item->fullname }}</p>
                                                     </div>
                                                     <div class="col-12">
-                                                        <h6>Address / Link meet</h6>
+                                                        <h6>Lokasi</h6>
                                                         <p>{{ $item->interview_location }}</p>
                                                     </div>
                                                 </div>
@@ -81,7 +81,7 @@
                                                             value="{{ $item->fullname }}" readonly>
                                                     </div>
                                                     <div class="col-12">
-                                                        <label for="interview_location">Alamat / Link meet interview</label>
+                                                        <label for="interview_location">Lokasi</label>
                                                         <input type="text" name="interview_location" class="form-control"
                                                             value="{{ $item->interview_location }}">
                                                     </div>

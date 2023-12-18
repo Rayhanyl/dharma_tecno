@@ -30,6 +30,14 @@ class UserSeeder extends Seeder
                 'phone_number'      => '+6285282205728',
                 'role'              => 'applicant'
             ],
+            [
+                'email'             => 'interviewer@mail.com',
+                'password'          => 'qwerty',
+                'first_name'        => 'Interviewer',
+                'last_name'         => 'TDI',
+                'phone_number'      => '+6285282205728',
+                'role'              => 'interviewer'
+            ],
         ];
 
         foreach ($users as $user) {

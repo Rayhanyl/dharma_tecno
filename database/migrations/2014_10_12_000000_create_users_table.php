@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('phone_number');
-            $table->enum('role', ['admin', 'applicant']);
+            $table->enum('role', ['admin', 'applicant', 'interviewer']);
             $table->rememberToken();
             $table->timestamps();
         });

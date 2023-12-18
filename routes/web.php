@@ -32,6 +32,9 @@ Route::prefix('/auth')->name('auth.')->controller(AuthenticationController::clas
 Route::middleware('auth')->group(function () {
     Route::resource('/application', ApplicationController::class);
     Route::get('/dashboard', [DashboardController::class, 'dashboardView'])->name('dashboard.page');
+    Route::get('/interviewer', [DashboardController::class, 'interviewerView'])->name('interviewer.page');
+    Route::get('/create/interviewer', [DashboardController::class, 'createInterviewerView'])->name('create.interviewer.page');
+    Route::post('/store/interviewer', [DashboardController::class, 'storeUserInterviewer'])->name('store.user.interviewer');
     Route::get('/data-diri/user', [DashboardController::class, 'dataDiriView'])->name('datadiri.page');
     Route::get('/status-lamaran', [DashboardController::class, 'statusLamaranView'])->name('status.page');
     Route::get('/form/calon-karyawan', [DashboardController::class, 'formCalonKaryawanView'])->name('form.calon-karyawan.page');
