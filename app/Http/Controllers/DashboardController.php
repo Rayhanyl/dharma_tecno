@@ -23,6 +23,7 @@ class DashboardController extends Controller
     }
 
     public function interviewerView(){
+
         return view('admin.interviewer');
     }
 
@@ -140,5 +141,11 @@ class DashboardController extends Controller
             Alert::warning('Error', 'Contact Developer to Fix This');
             return redirect()->back();
         }
+    }
+
+    // Interviewer
+
+    public function dashboardInterviewView(){
+        return view('interviewer.index');
     }
 }
