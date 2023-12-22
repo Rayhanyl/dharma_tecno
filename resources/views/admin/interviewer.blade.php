@@ -29,13 +29,25 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                        </tr>
+                                                        @foreach ($interviewer as $item)
+                                                            <tr>
+                                                                <td>{{ $loop->iteration }}</td>
+                                                                <td>{{ $item->first_name }}</td>
+                                                                <td>{{ $item->last_name }}</td>
+                                                                <td>{{ $item->phone_number }}</td>
+                                                                <td>
+                                                                    <div class="btn-group gap-2" role="group"
+                                                                        aria-label="Basic example">
+                                                                        <a class="btn btn-sm bg-gradient-info btn-info rounded-pill" href="">
+                                                                            Ubah
+                                                                        </a>
+                                                                        <a class="btn btn-sm bg-gradient-danger btn-primary rounded-pill">
+                                                                            Hapus
+                                                                        </a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>

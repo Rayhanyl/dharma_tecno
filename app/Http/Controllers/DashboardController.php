@@ -23,8 +23,8 @@ class DashboardController extends Controller
     }
 
     public function interviewerView(){
-
-        return view('admin.interviewer');
+        $interviewer = User::where('role', 'interviewer')->get();
+        return view('admin.interviewer', compact('interviewer'));
     }
 
     public function createInterviewerView(){
