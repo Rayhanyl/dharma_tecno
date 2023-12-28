@@ -23,7 +23,8 @@ class DashboardController extends Controller
     }
 
     public function interviewerView(){
-        return view('admin.interviewer');
+        $interviewer = User::where('role', 'interviewer')->get();
+        return view('admin.interviewer', compact('interviewer'));
     }
 
     public function createInterviewerView(){
@@ -142,5 +143,11 @@ class DashboardController extends Controller
             Alert::warning('Error', 'Contact Developer to Fix This');
             return redirect()->back();
         }
+    }
+
+    // Interviewer
+
+    public function dashboardInterviewView(){
+        return view('interviewer.index');
     }
 }

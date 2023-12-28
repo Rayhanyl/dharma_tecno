@@ -18,7 +18,7 @@
                                     <div class="row">
                                         <div class="col-12 my-3" style="width:100%">
                                             <div class="table-responsive">
-                                                <table class="table table-striped " id="table-data-calon-interview">
+                                                <table class="table table-striped " id="table-data-user-interviewer">
                                                     <thead class="table-orange">
                                                         <tr>
                                                             <th class="text-center">No</th>
@@ -29,13 +29,25 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                        </tr>
+                                                        @foreach ($interviewer as $item)
+                                                            <tr>
+                                                                <td>{{ $loop->iteration }}</td>
+                                                                <td>{{ $item->first_name }}</td>
+                                                                <td>{{ $item->last_name }}</td>
+                                                                <td>{{ $item->phone_number }}</td>
+                                                                <td>
+                                                                    <div class="btn-group gap-2" role="group"
+                                                                        aria-label="Basic example">
+                                                                        <a class="btn btn-sm bg-gradient-info btn-info rounded-pill" href="">
+                                                                            Ubah
+                                                                        </a>
+                                                                        <a class="btn btn-sm bg-gradient-danger btn-primary rounded-pill">
+                                                                            Hapus
+                                                                        </a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -48,32 +60,12 @@
                 </div>
             </div>
         </section>
-
-        {{-- Modal --}}
-        <div class="modal fade" id="approvalModal" tabindex="-1" role="dialog" aria-labelledby="approvalModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="approvalModalLabel">Approval</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div id="loader-approval"></div>
-                        <div id="detail-form-approval"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{-- Modal --}}
     @endsection
 
     @push('script')
         <script>
             $(document).ready(function() {
-                $('#table-data-calon-interview').DataTable({
+                $('#table-data-user-interviewer').DataTable({
                     responsive: true,
                     lengthMenu: [
                         [5, 10, 25, -1],
