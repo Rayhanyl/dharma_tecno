@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/status-lamaran', [DashboardController::class, 'statusLamaranView'])->name('status.page');
     Route::get('/form/calon-karyawan', [DashboardController::class, 'formCalonKaryawanView'])->name('form.calon-karyawan.page');
     Route::get('/data/calon-karyawan', [DashboardController::class, 'dataCalonPelamarView'])->name('data.calon.page');
+    Route::get('/data/pelamar-interview', [DashboardController::class, 'interviewPelamarView'])->name('data.interview.page');
     Route::get('/view/data/applicant/{id}', [DashboardController::class, 'viewDataApplicant'])->name('view.data.applicant');
     Route::get('/history/pelamar', [DashboardController::class, 'historyPelamarView'])->name('data.pelamar.page');
     Route::get('/modal/approval/{application}', [DashboardController::class, 'modalApproval'])->name('ajax.modal.approval');

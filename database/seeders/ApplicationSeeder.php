@@ -33,6 +33,7 @@ class ApplicationSeeder extends Seeder
             'cv'                     => 'CV',
             'cv_ext'                 => '.pdf',
             'status'                 => 'processed',
+            'interviewer_id'         => null,
             'position_id'            => 2,
             'user_id'                => 2
         ]);

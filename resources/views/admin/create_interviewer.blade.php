@@ -12,7 +12,7 @@
                             <div class="card"
                                 style="box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;">
                                 <div class="card-body">
-                                    <form class="row g-3" action="{{ route ('store.user.interviewer') }}" method="POST">
+                                    <form class="row g-3" action="{{ route('store.user.interviewer') }}" method="POST">
                                         @csrf
                                         <div class="col-6">
                                             <label for="">First Name</label>
@@ -28,7 +28,8 @@
                                         </div>
                                         <div class="col-6">
                                             <label for="">Phone Number</label>
-                                            <input type="number" class="form-control" name="phone_number" id="phone_number">
+                                            <input type="number" class="form-control" name="phone_number"
+                                                id="phone_number">
                                         </div>
                                         <div class="col-12">
                                             <label for="">Password</label>
@@ -45,5 +46,4 @@
                 </div>
             </div>
         </section>
-
     @endsection

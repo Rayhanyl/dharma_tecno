@@ -90,13 +90,25 @@
                                         </li>
                                     @endif
 
-                                    <li class="nav-item">
-                                        <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
-                                            href="{{ route('data.pelamar.page') }}">
-                                            <i class="fas fa-table opacity-6 text-dark me-1"></i>
-                                            Histori Data Pelamar
-                                        </a>
-                                    </li>
+                                    @if (Auth::user()->role === 'interviewer')
+                                        <li class="nav-item">
+                                            <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
+                                                href="{{ route('data.interview.page') }}">
+                                                <i class="fas fa-table opacity-6 text-dark me-1"></i>
+                                                Data Interview Pelamar
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if (Auth::user()->role === 'admin' || Auth::user()->role === 'applicant')
+                                        <li class="nav-item">
+                                            <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
+                                                href="{{ route('data.pelamar.page') }}">
+                                                <i class="fas fa-table opacity-6 text-dark me-1"></i>
+                                                Histori Data Pelamar
+                                            </a>
+                                        </li>
+                                    @endif
                                     <li class="nav-item">
                                         <a class="nav-link me-2" href="{{ route('datadiri.page') }}">
                                             <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>

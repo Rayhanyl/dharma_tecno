@@ -101,7 +101,7 @@ class DashboardController extends Controller
 
     public function viewDataApplicant($id)
     {
-        $data = Application::where('id', $id)->with('user', 'position', 'educations', 'certificate')->get();
+        $data = Application::where('id', $id)->with('user', 'position', 'educations', 'certificate', 'interviewer')->get();
         return view('admin.view_data_applicant', compact('data'));
     }
 
@@ -109,6 +109,12 @@ class DashboardController extends Controller
     {
         $positions = Position::all();
         return view('admin.form_calon', compact('positions'));
+    }
+
+    public function interviewPelamarView()
+    {
+        $data = Application::where('status', 'interviewed')->where('interviewer_id', Auth::user()->id)->with('position')->get();
+        return view('admin.data_calon_pelamar', compact('data'));
     }
 
     public function dataCalonPelamarView()
@@ -145,7 +151,7 @@ class DashboardController extends Controller
             if ($application->status == 'processed') {
                 $value = [
                     'interview_date' => $request->interview_date,
-                    'interviewer' => $request->interviewer_id,
+                    'interviewer_id' => $request->interviewer_id,
                     'interview_location' => $request->interview_location,
                 ];
             }

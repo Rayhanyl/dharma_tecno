@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('interviewer', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('name');
+            $table->string('position');
             $table->timestamps();
         });
     }

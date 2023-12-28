@@ -33,4 +33,9 @@ class Application extends Model
     {
         return $this->hasMany(Certificate::class);
     }
+
+    public function interviewer()
+    {
+        return $this->belongsTo(User::class, 'interviewer_id', 'id');
+    }
 }

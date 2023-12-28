@@ -23,8 +23,6 @@
                                                             <th class="text-center">Umur</th>
                                                             <th class="text-center">Posisi</th>
                                                             <th class="text-center">Tanggal Melamar</th>
-                                                            <th class="text-center">Status</th>
-                                                            <th class="text-center">Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -41,20 +39,6 @@
                                                                     {{ $item->position->name }}</td>
                                                                 <td class="text-center text-capitalize">
                                                                     {{ \Carbon\Carbon::parse($item->creaeted_at)->format('d F Y') }}
-                                                                </td>
-                                                                <td class="text-center text-capitalize">{{ $item->status }}
-                                                                </td>
-                                                                <td class="text-center">
-                                                                    <div class="btn-group gap-2" role="group"
-                                                                        aria-label="Basic example">
-                                                                        <a class="btn btn-sm bg-gradient-info rounded-pill btn-approval"
-                                                                            data-id-application="{{ $item->id }}">
-                                                                            Approval
-                                                                        </a>
-                                                                        <a href="{{ route('view.data.applicant', ['id' => $item->id]) }}?ref=calon_pelamar"
-                                                                            class="btn btn-sm btn-primary rounded-pill">Detail
-                                                                            Lamaran</a>
-                                                                    </div>
                                                                 </td>
                                                             </tr>
                                                         @endforeach

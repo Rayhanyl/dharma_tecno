@@ -41,7 +41,8 @@
                                                     </div>
                                                     <div class="col-4">
                                                         <h6>Pewawancara</h6>
-                                                        <p>{{ $item->interviewer }}</p>
+                                                        <p>{{ $item->interviewer->first_name }}
+                                                            {{ $item->interviewer->last_name }}</p>
                                                     </div>
                                                     <div class="col-4">
                                                         <h6>Pelamar</h6>
@@ -72,7 +73,7 @@
                                                     <div class="col-12 col-lg-4">
                                                         <label for="interviewer">Pewawancara</label>
                                                         <input type="text" name="interviewer" class="form-control"
-                                                            value="{{ $item->interviewer }}">
+                                                            value="{{ $item->interviewer->first_name }} {{ $item->interviewer->last_name }}">
 
                                                     </div>
                                                     <div class="col-12 col-lg-4">
