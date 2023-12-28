@@ -93,6 +93,8 @@ class DashboardController extends Controller
     public function modalApproval($application)
     {
         $data = Application::where('id', $application)->get();
+        $interviewers = User::whereRole('interview')->get();
+        dd($interviewers);
         return view('ajax.modal_approval', compact('data'));
     }
 

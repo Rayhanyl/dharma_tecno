@@ -31,9 +31,9 @@ return new class extends Migration
             $table->string('cv');
             $table->string('cv_ext');
             $table->date('interview_date')->nullable();
-            $table->string('interviewer')->nullable();
             $table->string('interview_location')->nullable();
             $table->enum('status', ['processed', 'rejected', 'interviewed', 'accepted']);
+            $table->foreignId('interviewer_id')->nullable();
             $table->foreignId('position_id');
             $table->foreignId('user_id');
             $table->timestamps();
