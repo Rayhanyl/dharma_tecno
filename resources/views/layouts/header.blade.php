@@ -59,18 +59,18 @@
                                             Home
                                         </a>
                                     </li>
-                                <li class="nav-item">
-                                    <a class="nav-link me-2" href="{{ route ('auth.register.page') }}">
-                                        <i class="fas fa-registered opacity-6 text-dark me-1"></i>
-                                        Sign Up
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link me-2" href="{{ route ('auth.login.page') }}">
-                                        <i class="fas fa-sign-in-alt opacity-6 text-dark me-1"></i>
-                                        Sign In
-                                    </a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link me-2" href="{{ route('auth.register.page') }}">
+                                            <i class="fas fa-registered opacity-6 text-dark me-1"></i>
+                                            Sign Up
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link me-2" href="{{ route('auth.login.page') }}">
+                                            <i class="fas fa-sign-in-alt opacity-6 text-dark me-1"></i>
+                                            Sign In
+                                        </a>
+                                    </li>
                                 @endguest
                                 @auth
                                     <li class="nav-item">
@@ -103,12 +103,14 @@
                                             Data Diri
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link me-2" href="{{ route ('interviewer.page') }}">
-                                            <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
-                                            Interviewer
-                                        </a>
-                                    </li>
+                                    @if (Auth::user()->role === 'admin')
+                                        <li class="nav-item">
+                                            <a class="nav-link me-2" href="{{ route('interviewer.page') }}">
+                                                <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
+                                                Interviewer
+                                            </a>
+                                        </li>
+                                    @endif
                                     @if (Auth::user()->role === 'applicant')
                                         <li class="nav-item">
                                             <a class="nav-link me-2" href="{{ route('status.page') }}">
@@ -118,8 +120,7 @@
                                         </li>
                                     @endif
                                     <li class="nav-item">
-                                        <a class="nav-link me-2"
-                                            href="{{ route('auth.logout') }}">
+                                        <a class="nav-link me-2" href="{{ route('auth.logout') }}">
                                             <i class="fas fa-sign-out-alt opacity-6 text-dark me-1"></i>
                                             Log Out
                                         </a>

@@ -13,8 +13,8 @@
                         <div class="col-12">
                             <div class="card shadow rounded-4">
                                 <div class="card-body">
-                                    <h6>Posisi yang dilamar : {{ $application->position->name }}</h6>
                                     @if ($application)
+                                        <h6>Posisi yang dilamar : {{ $application->position->name }}</h6>
                                         @if ($application->status == 'rejected')
                                             <h4 class="text-danger text-center">Maaf, anda tidak lolos seleksi</h4>
                                         @else

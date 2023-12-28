@@ -160,19 +160,27 @@
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-between my-4">
-                                            <h4>Setifikat</h4>
+                                            <h4>Sertifikat</h4>
                                             <button class="btn btn-success btn-tambah-sertifikat" type="button">
                                                 Tambah Sertifikat
                                             </button>
                                         </div>
                                         <div class="row certificate-row">
                                             <div class="col-12 certificate-item">
-                                                <label for="sertifikat" class="form-label">Serifikat (Jika
+                                                <label for="sertifikat" class="form-label">Sertifikat (Jika
                                                     Ada)</label>
-                                                <input type="file" name="sertifikat[]" class="form-control"
-                                                    accept=".pdf, .jpeg, .jpg, .png" multiple="multiple">
-                                                <button class="btn btn-danger btn-remove-certificate"
-                                                    type="button">-</button>
+                                                <div class="row">
+                                                    <div class="col-11">
+                                                        <input type="file" name="sertifikat[]" class="form-control"
+                                                            accept=".pdf, .jpeg, .jpg, .png" multiple="multiple">
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <button class="btn btn-danger btn-remove-certificate float-end"
+                                                            type="button">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -335,11 +343,20 @@
                 $('.btn-tambah-sertifikat').on('click', function() {
                     $('.certificate-row').append(`
                         <div class="col-12 certificate-item">
-                            <label for="sertifikat" class="form-label">Serifikat (Jika
+                            <label for="sertifikat" class="form-label">Sertifikat (Jika
                                 Ada)</label>
-                            <input type="file" name="sertifikat[]" class="form-control" accept=".pdf, .jpeg, .jpg, .png">
-                            <button class="btn btn-danger btn-remove-certificate"
-                                type="button">-</button>
+                            <div class="row">
+                                <div class="col-11">
+                                    <input type="file" name="sertifikat[]" class="form-control"
+                                        accept=".pdf, .jpeg, .jpg, .png" multiple="multiple">
+                                </div>
+                                <div class="col-1">
+                                    <button class="btn btn-danger btn-remove-certificate float-end"
+                                        type="button">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     `)
                 });

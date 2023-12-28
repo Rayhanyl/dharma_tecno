@@ -22,16 +22,55 @@ class DashboardController extends Controller
         return view('admin.dashboard', compact('application'));
     }
 
-    public function interviewerView(){
+    public function interviewerView()
+    {
         $interviewer = User::where('role', 'interviewer')->get();
         return view('admin.interviewer', compact('interviewer'));
     }
 
-    public function createInterviewerView(){
+    public function createInterviewerView()
+    {
         return view('admin.create_interviewer');
     }
 
-    public function storeUserInterviewer(Request $request){    
+    public function editInterviewerView(User $user)
+    {
+        return view('admin.edit_interviewer', compact('user'));
+    }
+
+    public function updateUserInterviewer(Request $request, User $user)
+    {
+        try {
+            $user->email = $request->email;
+            $user->first_name = $request->first_name;
+            $user->last_name = $request->last_name;
+            $user->phone_number = $request->phone_number;
+            if ($request->password !== null) {
+                $user->password = $request->password;
+            }
+            $user->save();
+            Alert::toast('Berhasil mengubah akun', 'success');
+            return redirect()->route('interviewer.page');
+        } catch (\Throwable $e) {
+            Alert::warning('Error', 'Contact Developer to Fix This');
+            return redirect()->back();
+        }
+    }
+
+    public function destroyUserInterviewer(User $user)
+    {
+        try {
+            $user->delete();
+            Alert::toast('Berhasil Menghapus akun', 'success');
+            return redirect()->route('interviewer.page');
+        } catch (\Throwable $e) {
+            Alert::warning('Error', 'Contact Developer to Fix This');
+            return redirect()->back();
+        }
+    }
+
+    public function storeUserInterviewer(Request $request)
+    {
         try {
             User::create([
                 'email' => $request->email,
@@ -94,9 +133,8 @@ class DashboardController extends Controller
     public function modalApproval($application)
     {
         $data = Application::where('id', $application)->get();
-        $interviewers = User::whereRole('interview')->get();
-        dd($interviewers);
-        return view('ajax.modal_approval', compact('data'));
+        $interviewers = User::whereRole('interviewer')->get();
+        return view('ajax.modal_approval', compact('data', 'interviewers'));
     }
 
     public function updateApproval(Request $request)
@@ -107,7 +145,7 @@ class DashboardController extends Controller
             if ($application->status == 'processed') {
                 $value = [
                     'interview_date' => $request->interview_date,
-                    'interviewer' => $request->interviewer,
+                    'interviewer' => $request->interviewer_id,
                     'interview_location' => $request->interview_location,
                 ];
             }
@@ -147,7 +185,8 @@ class DashboardController extends Controller
 
     // Interviewer
 
-    public function dashboardInterviewView(){
+    public function dashboardInterviewView()
+    {
         return view('interviewer.index');
     }
 }

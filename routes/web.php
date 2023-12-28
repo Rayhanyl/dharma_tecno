@@ -36,6 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/interviewer', [DashboardController::class, 'interviewerView'])->name('interviewer.page');
     Route::get('/create/interviewer', [DashboardController::class, 'createInterviewerView'])->name('create.interviewer.page');
     Route::post('/store/interviewer', [DashboardController::class, 'storeUserInterviewer'])->name('store.user.interviewer');
+    Route::get('/edit/interviewer/{user}', [DashboardController::class, 'editInterviewerView'])->name('edit.interviewer.page');
+    Route::post('/update/interviewer/{user}', [DashboardController::class, 'updateUserInterviewer'])->name('update.user.interviewer');
+    Route::delete('/delete/interviewer/{user}', [DashboardController::class, 'destroyUserInterviewer'])->name('delete.user.interviewer');
     Route::get('/data-diri/user', [DashboardController::class, 'dataDiriView'])->name('datadiri.page');
     Route::get('/status-lamaran', [DashboardController::class, 'statusLamaranView'])->name('status.page');
     Route::get('/form/calon-karyawan', [DashboardController::class, 'formCalonKaryawanView'])->name('form.calon-karyawan.page');

@@ -9,7 +9,8 @@
                             <h3 class="text-white">Data Calon Interview</h3>
                         </div>
                         <div class="col-12">
-                            <a href="{{ route ('create.interviewer.page') }}" class="btn bg-gradient-primary">Add Interviewer</a>
+                            <a href="{{ route('create.interviewer.page') }}" class="btn bg-gradient-primary">Add
+                                Interviewer</a>
                         </div>
                         <div class="col-12">
                             <div class="card"
@@ -38,12 +39,20 @@
                                                                 <td>
                                                                     <div class="btn-group gap-2" role="group"
                                                                         aria-label="Basic example">
-                                                                        <a class="btn btn-sm bg-gradient-info btn-info rounded-pill" href="">
+                                                                        <a class="btn btn-sm bg-gradient-info btn-info rounded-pill"
+                                                                            href="{{ route('edit.interviewer.page', $item->id) }}">
                                                                             Ubah
                                                                         </a>
-                                                                        <a class="btn btn-sm bg-gradient-danger btn-primary rounded-pill">
-                                                                            Hapus
-                                                                        </a>
+                                                                        <form
+                                                                            action="{{ route('delete.user.interviewer', $item->id) }}"
+                                                                            method="post">
+                                                                            @csrf
+                                                                            @method('delete')
+                                                                            <button type="submit"
+                                                                                class="btn btn-sm bg-gradient-danger btn-primary rounded-pill">
+                                                                                Hapus
+                                                                            </button>
+                                                                        </form>
                                                                     </div>
                                                                 </td>
                                                             </tr>
